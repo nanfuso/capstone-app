@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  primary_id: 1
+  primary_count: 1
+  dependent_id: 1
+  dependent_count: 1
+
+two:
+  primary_id: 1
+  primary_count: 1
+  dependent_id: 1
+  dependent_count: 1
