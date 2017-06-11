@@ -16,9 +16,11 @@ class EmployeesController < ApplicationController
                                     password_confirmation: params[:password_confirmation]
                                 )
         if employee.save
+            flash[:success] = "Account created!"
             redirect_to '/'
         else
             redirect_to '/signup'
+            flash[:warning] = "Please submit form again"
         end
     end
 end

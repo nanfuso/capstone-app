@@ -1,0 +1,12 @@
+<% if @shifts %>
+    <% @shifts.each do |shift| %>
+    <div><h2><%= shift.day %> - <%= shift.time %> - <%= shift.status %></h2></div>
+    <% end %>
+<% end %>
+
+
+<%= form_tag '/shifts', method: :post do %>
+<div>Day: <input type="text" name="day"></div>
+<div>Time: <input type="text" name="time"></div>
+<input type="submit" value="Submit Availability">
+<% end %>
