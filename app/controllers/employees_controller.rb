@@ -13,7 +13,8 @@ class EmployeesController < ApplicationController
                                     last_name: params[:last_name],
                                     email: params[:email],
                                     password: params[:password],
-                                    password_confirmation: params[:password_confirmation]
+                                    password_confirmation: params[:password_confirmation],
+                                    company_id: params[:company_id]
                                 )
         if employee.save
             flash[:success] = "Account created!"

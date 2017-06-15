@@ -1,23 +1,44 @@
 class ShiftsController < ApplicationController
     def index
-        if current_employee
-            @shifts = Shift.find_by(where employee_id: current_employee.id)
-        else
-            flash[:warning] = "Please sign in to see current schedule" 
-            redirect_to '/login'
-        end
+            @shifts = Shift.where("status = ?", "need coverage")
     end
 
     def create
-        shift = Shift.new(
+        shift = Shift.create!(
                         day: params[:day],
                         time: params[:time],
-                        status: "available",
-                        employee_id: current_employee.id
+                        status: "need coverage",
+                        # position_id: params[:position_id]
                             )
-        shift.save
-        flash[:success] = "Schedule created"
-        redirect_to '/'
+        # shift.save
+       flash[:success] = "Schedule created"
+        redirect_to '/shifts'
+        
     end
 
+    def edit
+        @shift = Shift.find(params[:id])
+    end
+
+    def update
+        @shift = Shift.find(params[:id])
+        @shift.assign_attributes(
+                                day: params[:day],
+                                date: params[:date],
+                                time: params[:time],
+                                position_id: params[:position_id]
+            )
+        if @shift.save
+            flash[:success] = "Posting Updated"
+        else
+            render 'edit.html.erb'
+        end
+    end
+
+    def destroy
+        shift = Shift.find(params[:id])
+        shift.destroy
+        flash[:danger] = "Posting Destroyed"
+        redirect_to '/'
+    end
 end

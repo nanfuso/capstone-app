@@ -9,5 +9,16 @@ Rails.application.routes.draw do
 
     get '/shifts' => 'shifts#index'
     post '/shifts' => 'shifts#create'
+    get '/shifts/:id' => 'shifts#show'
+    get 'shifts/:id/edit' => 'shifts#edit'
+    patch '/shifts/:id' => 'shifts#update'
+    delete '/shifts/:id' => 'shifts#destroy'
+
+    get '/positions' => 'positions#index'
+    post '/positions' => 'positions#create'
+    get '/positions/:id/edit' => 'positions#edit'
+    patch '/positions/:id' => 'positions#update'
+    delete '/positions/:id' => 'positions#delete'
+
 
 end

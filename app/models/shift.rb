@@ -3,5 +3,4 @@ class Shift < ApplicationRecord
     has_many :venues, through: :events
     has_many :position_shifts
     has_many :employees, through: :position_shifts
-    belongs_to :company
 end

@@ -6,9 +6,20 @@ class ApplicationController < ActionController::Base
   end
 helper_method :current_employee
 
+def admin_signed_in?
+    current_employee && current_employee.admin 
+  end
+  helper_method :admin_signed_in?
+
 private
 
     def authenticate_user!
-        redirect_to '/login' unless current_user
+        redirect_to '/login' unless current_employee
     end
 end
+
+    def authenticate_admin!
+       redirect_to '/' unless (current_employee && current_employee.admin)
+    end
+
+

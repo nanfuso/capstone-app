@@ -3,8 +3,8 @@ class Employee < ApplicationRecord
     belongs_to :company, optional: true
     has_many :position_shifts
     has_many :shifts, through: :position_shifts
-    has_many :postiions, through: :position_shifts
+    has_many :positions
 
     validates :email, uniqueness: true
-    validates :password, length: {in: 6..20}
+    validates :password, length: {in: 6..20}, on: :create
 end
