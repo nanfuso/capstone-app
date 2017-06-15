@@ -1,0 +1,13 @@
+<% if @position_shifts %>
+<% @position_shifts.each do |position_shift| %>
+    <div><%= position_shift.shift.day %>
+    <%= position_shift.shift.time %>
+    <%= position_shift.employee.name %></div>
+<% end %>
+
+
+<%= form_tag '/positionshifts', method: :post do %>
+    <div>Shift: <%= collection_select :shift, :shift_id, Shift.all, :id,   %></div>
+
+
+<% end %>

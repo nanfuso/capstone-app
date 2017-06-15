@@ -20,5 +20,9 @@ Rails.application.routes.draw do
     patch '/positions/:id' => 'positions#update'
     delete '/positions/:id' => 'positions#delete'
 
-
+    get '/positionshifts' => 'positionshifts#index'
+    post '/positionshifts' => 'positionshifts#create'
+    get '/positionshifts/:id/edit' => 'positionshifts#edit'
+    patch '/positionshifts/:id' => 'positionshifts#update'
+    delete '/positionshifts/:id' => 'positionshifts#delete'
 end
