@@ -26,8 +26,8 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-        <% if current_employee == nil %>
-          <li class="active"><a href="/signup">Sign Up <span class="sr-only">(current)</span></a></li>
+        <% if admin_signed_in? %>
+          <li class="active"><a href="/signup">Add Employee <span class="sr-only">(current)</span></a></li>
           <li><a href="/login">Log In</a></li>
           <% end %>
           <li class="dropdown">
@@ -61,8 +61,8 @@
             <ul class="dropdown-menu">
             <% if admin_signed_in? %>
               <li><a href="/shifts">Coverage</a></li>
-              <% end %>
               <li><a href="/positions">Positions</a></li>
+              <% end %>
               <li><a href="#">Something else here</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="#">Separated link</a></li>

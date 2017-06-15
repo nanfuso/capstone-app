@@ -7,13 +7,14 @@ class PositionsController < ApplicationController
     def create
         position = Position.create(
                                     name: params[:name],
-                                    company_id: params[:company_id]    
+                                    company_id: current_employee.company_id    
                                  )
         if position.save
             flash[:success] = "Position successfully created"
             redirect_to '/'
         else redirect_to '/positions/new'
             flash[:warning] = "Please submit again"
+        end
     end
 
     def edit
@@ -22,12 +23,13 @@ class PositionsController < ApplicationController
 
     def update
         @position = Position.find(params[:id])
-        @positin.assign_attributes(
+        @position.assign_attributes(
                                     name: params[:name],
-                                    company_id: params[:company_id]
+                                    company_id: current_employee.company_id
                                     )
         if @position.save
             flash[:success] = "Position Updated"
+            redirect_to '/positions'
         else
             render 'edit.html.erb'
         end
@@ -38,4 +40,5 @@ class PositionsController < ApplicationController
         position.destroy
         flash[:danger] = "Position Deleted"
         redirect_to '/'
+    end
 end

@@ -2,7 +2,8 @@
 
 <%= form_tag '/positions', method: :post do %>
     <div>Name: <input type="text" name="name"></div>
-    <div>Company Id: <input type="integer" name="company_id"></div>
+    <input type="hidden" name="company_id">
+    <input type="submit" value="Submit">
 <% end %>
 
 <h1>Current Positions</h1>
@@ -11,6 +12,6 @@
     <div><%= position.name %> 
     <%= link_to "Update |", "/positions/#{position.id}/edit" %>
     <%= link_to " Delete", "/positions/#{position.id}", method: :delete %>
-
     </div>
+    <% end %>
 <% end %>
