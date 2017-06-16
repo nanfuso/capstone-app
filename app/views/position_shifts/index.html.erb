@@ -1,13 +1,21 @@
+<h2>Scheduled Shifts</h2>
 <% if @position_shifts %>
-<% @position_shifts.each do |position_shift| %>
-    <div><%= position_shift.shift.day %>
-    <%= position_shift.shift.time %>
-    <%= position_shift.employee.name %></div>
+    <% @position_shifts.each do |position_shift| %>
+        <div><%= position_shift.shift.date %>
+        <%= position_shift.shift.time.upcase %> -
+        <%= position_shift.employee.first_name.titleize %>
+        <%= link_to "Update |", "/positionshifts/#{position_shift.id}/edit" %>
+        <%= link_to " Delete", "/positionshifts/#{position_shift.id}", method: :delete %>
+        </div>
+    <% end %>
 <% end %>
 
+<br>
 
+<h2>Shifts to be scheduled</h2>
 <%= form_tag '/positionshifts', method: :post do %>
-    <div>Shift: <%= collection_select :shift, :shift_id, Shift.all, :id,   %></div>
-
-
+    <div>Day: <%= collection_select :shift, :shift_id, Shift.all, :id, :date  %></div>
+    <div>Day: <%= collection_select :shift, :shift_id, Shift.all, :id, :time  %></div>
+    <div>Employee: <%= collection_select :employee, :employee_id, Employee.all, :id, :first_name %></div>
+    <input type="submit" value="Staff Shift">
 <% end %>

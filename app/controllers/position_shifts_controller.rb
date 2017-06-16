@@ -2,14 +2,15 @@ class PositionShiftsController < ApplicationController
     
     def index
         @position_shifts = PositionShift.all
+        @shifts = Shift.where("date = ?", params[:date])
     end
 
     def create
-        @position_shift = PositionShift.create(
+        @position_shift = PositionShift.create!(
                                         employee_id: params[:employee][:employee_id],
                                         shift_id: params[:shift][:shift_id]
                                             )
-        if position_shift.save
+        if @position_shift.save
             flash[:success] = "Employee Added to shift!"
             redirect_to '/positionshifts'
         else redirect_to '/positionshifts'
@@ -27,7 +28,7 @@ class PositionShiftsController < ApplicationController
                                         employee_id: params[:employee][:employee_id],
                                         shift_id: params[:shift][:shift_id]
                                         )
-        if position_shift.save
+        if @position_shift.save
             flash[:success] = "Shift Updated"
             redirect_to '/positionshifts'
         else
@@ -39,7 +40,7 @@ class PositionShiftsController < ApplicationController
         position_shift = PositionShift.find(params[:id])
         position_shift.destroy
         flash[:danger] = "Shift no longer covered"
-        redirect_to '/'
+        redirect_to '/positionshifts'
     end
 
 end

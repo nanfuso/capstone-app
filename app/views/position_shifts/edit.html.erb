@@ -1,0 +1,6 @@
+<h2>Update Shift</h2>
+<%= form_tag "/positionshifts/#{@position_shift.id}", method: :patch do %>
+    <div>Day: <%= collection_select :shift, :shift_id, Shift.all, :id, :date  %></div>
+    <div>Employee: <%= collection_select :employee, :employee_id, Employee.all, :id, :first_name %></div>
+    <input type="submit" value="Staff Shift">
+<% end %>

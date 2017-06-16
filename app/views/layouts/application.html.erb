@@ -28,6 +28,8 @@
         <ul class="nav navbar-nav">
         <% if admin_signed_in? %>
           <li class="active"><a href="/signup">Add Employee <span class="sr-only">(current)</span></a></li>
+          <% end %>
+          <% if current_employee == nil %>
           <li><a href="/login">Log In</a></li>
           <% end %>
           <li class="dropdown">
@@ -62,8 +64,8 @@
             <% if admin_signed_in? %>
               <li><a href="/shifts">Coverage</a></li>
               <li><a href="/positions">Positions</a></li>
+              <li><a href="/positionshifts">Staff Shifts</a></li>
               <% end %>
-              <li><a href="#">Something else here</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="#">Separated link</a></li>
             </ul>

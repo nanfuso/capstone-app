@@ -1,12 +1,14 @@
 class ShiftsController < ApplicationController
     def index
             @shifts = Shift.where("status = ?", "need coverage")
+
     end
 
     def create
         shift = Shift.create!(
                         day: params[:day],
                         time: params[:time],
+                        date: params[:date],
                         status: "need coverage",
                         # position_id: params[:position_id]
                             )

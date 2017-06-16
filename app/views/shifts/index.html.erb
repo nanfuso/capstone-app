@@ -1,7 +1,7 @@
-<h1>Which shifts need extra coverage?</h1>
+<h1>Shifts Needing Extra Coverage</h1>
 
 <% @shifts.each do |shift| %>
-<div><%= shift.day %>
+<div><%= shift.day %>,  <%= shift.date %>
 <%=  shift.time %>
     <%= link_to "Update |", "/shifts/#{shift.id}/edit" %>
     <%= link_to " Delete", "/shifts/#{shift.id}", method: :delete %>
