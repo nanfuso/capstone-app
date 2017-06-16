@@ -14,8 +14,8 @@
 
 <h2>Shifts to be scheduled</h2>
 <%= form_tag '/positionshifts', method: :post do %>
-    <div>Day: <%= collection_select :shift, :shift_id, Shift.all, :id, :date  %></div>
-    <div>Day: <%= collection_select :shift, :shift_id, Shift.all, :id, :time  %></div>
+    <div>Date: <%= collection_select :shift, :shift_id, Shift.all, :id, :date  %></div>
+    <div>Time: <%= collection_select :shift, :shift_id, Shift.all, :id, :time  %></div>
     <div>Employee: <%= collection_select :employee, :employee_id, Employee.all, :id, :first_name %></div>
     <input type="submit" value="Staff Shift">
 <% end %>
