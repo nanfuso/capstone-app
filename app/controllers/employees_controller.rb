@@ -1,8 +1,5 @@
 class EmployeesController < ApplicationController
-    
-    def index
-    end
-
+before_action :authenticate_admin!
     def new
         render 'new.html.erb'
     end
@@ -14,7 +11,8 @@ class EmployeesController < ApplicationController
                                     email: params[:email],
                                     password: params[:password],
                                     password_confirmation: params[:password_confirmation],
-                                    company_id: params[:company][:company_id]
+                                    company_id: params[:company][:company_id],
+                                    position_id: params[:position][:position_id]
                                 )
         if employee.save
             flash[:success] = "Account created!"

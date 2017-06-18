@@ -19,7 +19,7 @@ private
 end
 
     def authenticate_admin!
-       redirect_to '/' unless (current_employee && current_employee.admin)
+       redirect_to '/login' unless (current_employee && current_employee.admin)
     end
 
 

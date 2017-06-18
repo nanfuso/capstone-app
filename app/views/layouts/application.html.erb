@@ -35,7 +35,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="/logout">Log Out</a></li>
+
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
               <li role="separator" class="divider"></li>
@@ -64,10 +64,10 @@
             <% if admin_signed_in? %>
               <li><a href="/shifts">Coverage</a></li>
               <li><a href="/positions">Positions</a></li>
-              <li><a href="/positionshifts">Staff Shifts</a></li>
+              <li><a href="/">Staff Shifts</a></li>
               <% end %>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+              <li><a href="/logout">Log Out</a></li>
             </ul>
           </li>
         </ul>

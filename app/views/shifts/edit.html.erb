@@ -1,9 +1,7 @@
 
 <h1>Edit coverage</h1>
 <%= form_tag "shifts/#{@shift.id}", method: :patch do %>
-<div>Day: <input type="text" name="day" value="<%= @shift.day %>" </div>
 <div>Date: <input type="date" name="date" value="<%= @shift.date %>"></div>
 <div>Time: <input type="text" name="time" value="<%= @shift.time %>"></div>
-<!-- <div>Position Id: <input type="text" name="position_id" value="@shift.position_id"></div> -->
 <input type="submit" value="Create Request">
 <% end %>

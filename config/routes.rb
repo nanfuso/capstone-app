@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    get '/' => 'employees#index'
+
     get '/signup' => 'employees#new'
     post '/signup' => 'employees#create'
 
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     patch '/positions/:id' => 'positions#update'
     delete '/positions/:id' => 'positions#delete'
 
-    get '/positionshifts' => 'position_shifts#index'
+    get '/' => 'position_shifts#index'
     post '/positionshifts' => 'position_shifts#create'
     get '/positionshifts/:id/edit' => 'position_shifts#edit'
     patch '/positionshifts/:id' => 'position_shifts#update'

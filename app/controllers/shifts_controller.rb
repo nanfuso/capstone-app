@@ -1,16 +1,14 @@
 class ShiftsController < ApplicationController
+    before_action :authenticate_admin!
     def index
             @shifts = Shift.where("status = ?", "need coverage")
-
     end
 
     def create
         shift = Shift.create!(
-                        day: params[:day],
                         time: params[:time],
                         date: params[:date],
-                        status: "need coverage",
-                        # position_id: params[:position_id]
+                        status: "need coverage"
                             )
         # shift.save
        flash[:success] = "Schedule created"
@@ -25,10 +23,9 @@ class ShiftsController < ApplicationController
     def update
         @shift = Shift.find(params[:id])
         @shift.assign_attributes(
-                                day: params[:day],
                                 date: params[:date],
-                                time: params[:time],
-                                position_id: params[:position_id]
+                                time: params[:time]
+                                
             )
         if @shift.save
             flash[:success] = "Posting Updated"
