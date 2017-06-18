@@ -7,7 +7,7 @@ class ShiftsController < ApplicationController
     def create
         shift = Shift.create!(
                         time: params[:time],
-                        date: params[:date],
+                        shift_date: params[:shift_date],
                         status: "need coverage"
                             )
         # shift.save
@@ -23,7 +23,7 @@ class ShiftsController < ApplicationController
     def update
         @shift = Shift.find(params[:id])
         @shift.assign_attributes(
-                                date: params[:date],
+                                shift_date: params[:shift_date],
                                 time: params[:time]
                                 
             )
@@ -38,6 +38,6 @@ class ShiftsController < ApplicationController
         shift = Shift.find(params[:id])
         shift.destroy
         flash[:danger] = "Posting Destroyed"
-        redirect_to '/'
+        redirect_to '/shifts'
     end
 end

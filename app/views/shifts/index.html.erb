@@ -1,16 +1,17 @@
 <h1>Shifts Needing Extra Coverage</h1>
-
-<% @shifts.each do |shift| %>
-<div><%= shift.date %>
-<%=  shift.time %>
-    <%= link_to "Update |", "/shifts/#{shift.id}/edit" %>
-    <%= link_to " Delete", "/shifts/#{shift.id}", method: :delete %>
-</div>
-<% end %>
+<ul>
+    <% @shifts.each do |shift| %>
+    <li class="list-group-item"><%= shift.date %>
+    <%=  shift.time %>
+        <%= link_to "Update |", "/shifts/#{shift.id}/edit" %>
+        <%= link_to " Delete", "/shifts/#{shift.id}", method: :delete %>
+    </li>
+    <% end %>
+</ul>
 
 <h2>Any others?</h2>
 <%= form_tag '/shifts', method: :post do %>
-<div>Date: <input type="date" name="date"></div>
+<div>Date: <input type="date" name="shift_date"></div>
 <div>Time: <input type="text" name="time"></div>
 <input type="submit" value="Create Request">
 <% end %>

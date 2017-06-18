@@ -1,13 +1,16 @@
 <h2>Scheduled Shifts</h2>
-<% if @position_shifts.where("position.id = ?", "2") %>
-    <% @position_shifts.where("position_id = ?", "2").each do |position_shift| %>
-        <div><%= position_shift.shift.date %>
+<% if @position_shifts %>
+<ul>
+    <% @position_shifts.each do |position_shift| %>
+        <li class="list-group-item"><%= position_shift.shift.shift_date %>
         <%= position_shift.shift.time.upcase %> -
-        <%= position_shift.employee.first_name.titleize %>
+        <%= position_shift.employee.first_name.titleize %> - 
+        <%=  position_shift.position.name %>
         <%= link_to "Update |", "/positionshifts/#{position_shift.id}/edit" %>
         <%= link_to " Delete", "/positionshifts/#{position_shift.id}", method: :delete %>
-        </div>
+        </li>
     <% end %>
+    </ul>
 <% end %>
 
 <br>
