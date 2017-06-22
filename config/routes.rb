@@ -25,4 +25,6 @@ Rails.application.routes.draw do
     get '/positionshifts/:id/edit' => 'position_shifts#edit'
     patch '/positionshifts/:id' => 'position_shifts#update'
     delete '/positionshifts/:id' => 'position_shifts#delete'
+
+    get '/events' => 'events#index'
 end
