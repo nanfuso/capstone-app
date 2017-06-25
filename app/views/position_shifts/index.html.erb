@@ -1,19 +1,26 @@
 <h2>Scheduled Shifts</h2>
 <% if @position_shifts %>
-<ul>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Employee</th>
+        <th>Position</th>
+        <th>Employees Needed</th>
+    </tr>
     <% @position_shifts.each do |position_shift| %>
-        <li class="list-group-item">
-        <%= position_shift.shift.shift_date %>
-        <%= position_shift.shift.time.upcase %> -
-        <%= position_shift.employee.first_name.titleize %> - 
-        <%= position_shift.position.name %> -
-        <%= position_shift.friendly_employees_needed %> -
-        <%= link_to "Update |", "/positionshifts/#{position_shift.id}/edit" %>
-        <%= link_to " Delete", "/positionshifts/#{position_shift.id}", method: :delete %>
-        </li>
-    <% end %>
-    </ul>
+    <tr>
+        <td><%= position_shift.shift.shift_date %></td>
+        <td><%= position_shift.shift.time.upcase %></td>
+        <td><%= position_shift.employee.first_name.titleize %></td>
+        <td><%= position_shift.position.name %></td>
+        <td><%= position_shift.friendly_employees_needed %></td>
+        <td><%= link_to "Update", "/positionshifts/#{position_shift.id}/edit" %></td>
+        <td><%= link_to "Delete", "/positionshifts/#{position_shift.id}", method: :delete %></td>
+    <% end %>    
+    </tr>
 <% end %>
+</table>
 
 <br>
 

@@ -12,22 +12,21 @@ class PositionShift < ApplicationRecord
 
         if events_during_shift
             events_during_shift.each do |event|
-                patrons_from_events += event["capacity"] * 0.03
+                patrons_from_events += event["capacity"] * 0.02
             end
         end
         
-        capacity = patrons_from_events + 50
+        capacity = patrons_from_events + 30
         max_employees_on_floor = 15
-        if capacity > 300
+        if capacity > 500
             employees_needed = max_employees_on_floor
         elsif capacity < 100
             employees_needed = capacity * 0.08
-            employees_needed.to_f
+            employees_needed.ceil
         elsif
-            employees_needed = (capacity - 100)/50
-            employees_needed.to_f
+            employees_needed = 8 + ((capacity - 100)/75)
+            employees_needed.ceil
         end
-        employees_needed
     end
-    
+
 end
