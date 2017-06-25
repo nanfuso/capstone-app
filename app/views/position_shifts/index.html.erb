@@ -10,7 +10,7 @@
     </tr>
     <% @position_shifts.each do |position_shift| %>
     <tr>
-        <td><%= position_shift.shift.shift_date %></td>
+        <td><%= position_shift.shift.shift_date.strftime('%m/%d/%Y') %></td>
         <td><%= position_shift.shift.time.upcase %></td>
         <td><%= position_shift.employee.first_name.titleize %></td>
         <td><%= position_shift.position.name %></td>
@@ -26,7 +26,15 @@
 
 <h2>Shifts to be scheduled</h2>
 <%= form_tag '/positionshifts', method: :post do %>
-    <div>Date: <%= collection_select :shift, :shift_id, Shift.all, :id, :shift_date  %></div>
+    
+<!--     <select id="shift" onchange="changeShiftDetails()"> 
+      <% Shift.select(:shift_date).distinct.each do |shift| %>
+      <option value="<%= shift.shift_date %>"><%= shift.shift_date %></option> 
+      <% end %>
+    </select> 
+    <select id="shift_time"></select> 
+ -->
+    <div v-on:change="changeShiftDetails()">Date: <%= collection_select :shift, :shift_id, Shift.select(:shift_date).distinct, :id, :shift_date  %></div>
     <div>Time: <%= collection_select :shift, :shift_id, Shift.all, :id, :time  %></div>
     <div>Position: <%= collection_select :position, :position_id, Position.all, :id, :name %></div>
     <div>Employee: <%= collection_select :employee, :employee_id, Employee.all, :id, :first_name %></div>

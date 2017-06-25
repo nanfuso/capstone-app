@@ -1,13 +1,19 @@
 <h1>Shifts Needing Extra Coverage</h1>
-<ul>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
     <% @shifts.each do |shift| %>
-    <li class="list-group-item"><%= shift.shift_date %>
-    <%=  shift.time %>
-        <%= link_to "Update |", "/shifts/#{shift.id}/edit" %>
-        <%= link_to " Delete", "/shifts/#{shift.id}", method: :delete %>
-    </li>
-    <% end %>
-</ul>
+    <tr>
+        <td><%= shift.shift_date.strftime('%m/%d/%Y') %></td>
+        <td><%= shift.time.upcase %></td>
+        <td><%= link_to "Update", "/shifts/#{shift.id}/edit" %></td>
+        <td><%= link_to "Delete", "/shifts/#{shift.id}", method: :delete %></td>
+    <% end %>    
+    </tr>
+</table>
+
 
 <h2>Any others?</h2>
 <%= form_tag '/shifts', method: :post do %>
