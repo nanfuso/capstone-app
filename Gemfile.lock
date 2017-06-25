@@ -67,8 +67,6 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     erubi (1.6.0)
-    eventful (1.0.1)
-      methodphitamine (= 1.0.0)
     execjs (2.7.0)
     ffi (1.9.18)
     figaro (1.1.1)
@@ -93,7 +91,6 @@ GEM
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
-    methodphitamine (1.0.0)
     mime-types (1.25.1)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
@@ -190,7 +187,6 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-  eventful
   figaro
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3.1)

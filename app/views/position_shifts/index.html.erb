@@ -2,10 +2,12 @@
 <% if @position_shifts %>
 <ul>
     <% @position_shifts.each do |position_shift| %>
-        <li class="list-group-item"><%= position_shift.shift.shift_date %>
+        <li class="list-group-item">
+        <%= position_shift.shift.shift_date %>
         <%= position_shift.shift.time.upcase %> -
         <%= position_shift.employee.first_name.titleize %> - 
-        <%=  position_shift.position.name %>
+        <%= position_shift.position.name %> -
+        <%= position_shift.friendly_employees_needed %> -
         <%= link_to "Update |", "/positionshifts/#{position_shift.id}/edit" %>
         <%= link_to " Delete", "/positionshifts/#{position_shift.id}", method: :delete %>
         </li>

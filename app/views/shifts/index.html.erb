@@ -1,7 +1,7 @@
 <h1>Shifts Needing Extra Coverage</h1>
 <ul>
     <% @shifts.each do |shift| %>
-    <li class="list-group-item"><%= shift.date %>
+    <li class="list-group-item"><%= shift.shift_date %>
     <%=  shift.time %>
         <%= link_to "Update |", "/shifts/#{shift.id}/edit" %>
         <%= link_to " Delete", "/shifts/#{shift.id}", method: :delete %>

@@ -17,6 +17,9 @@ class PositionShiftsController < ApplicationController
         else redirect_to '/'
             flash[:warning] = "Please submit again"
         end
+
+
+
     end
 
     def edit
