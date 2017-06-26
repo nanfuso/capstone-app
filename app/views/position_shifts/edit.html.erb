@@ -1,9 +1,12 @@
 <h2>Update Shift</h2>
 <%= form_tag "/positionshifts/#{@position_shift.id}", method: :patch do %>
-    <div>Date: <%= collection_select :shift, :shift_id, Shift.all, :id, :shift_date, :selected => @position_shift.shift.shift_date%></div>
-    <div>Time: <%= collection_select :shift, :shift_id, Shift.all, :id, :time, :selected => @position_shift.shift.time%> </div>
+    <div>Date: <%= collection_select :shift, :shift_id, Shift.select(:shift_date).distinct, :id, :shift_date, :selected => @position_shift.shift.shift_date%></div>
+    <div>Time: <%= collection_select :shift, :shift_id, Shift.select(:time).distinct, :id, :time, :selected => @position_shift.shift.time%> </div>
     <div>Position: <%= collection_select :position, :position_id, Position.all, :id, :name %></div>
     <div>Employee: <%= collection_select :employee, :employee_id, Employee.all, :id, :first_name %></div>
+    <div>
     <input type="submit" value="Staff Shift">
+    <a href="/">Cancel</a>
+    </div>
 <% end %>
 

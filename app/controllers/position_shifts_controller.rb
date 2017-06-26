@@ -1,8 +1,10 @@
 class PositionShiftsController < ApplicationController
-    before_action :authenticate_admin!
+    before_action :authenticate_user!
+    before_action :authenticate_admin!, except: :index
+
     def index
         @position_shifts = PositionShift.all
-        # @shifts = Shift.where("shift_id = ?", params[:shift_id])
+        @employees_position_shifts = PositionShift.where(employee_id: current_employee.id)
     end
 
     def create
