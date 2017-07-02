@@ -5,8 +5,8 @@
     <div>Position: <%= collection_select :position, :position_id, Position.all, :id, :name %></div>
     <div>Employee: <%= collection_select :employee, :employee_id, Employee.all, :id, :first_name %></div>
     <div>
-    <input type="submit" value="Staff Shift">
-    <a href="/">Cancel</a>
+    <input type="submit" value="Staff Shift" class="btn btn-flat flat-info">
+    <a href="/" class="btn btn-flat flat-inverse">Cancel</a>
     </div>
 <% end %>
 
