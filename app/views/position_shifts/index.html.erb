@@ -58,30 +58,26 @@
                                     <br>
                                 <% end %>   
                             <% end %>
-
-
-                        <% end %>
-
-
-<% if @employees_position_shifts != nil %>
-    <h2>Your Scheduled Shifts</h2>
-        <table>
-            <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Employee</th>
-                <th>Position</th>
-            </tr>
-            <% @employees_position_shifts.each do |emp_position_shift| %>
-            <tr>
-                <td><%= emp_position_shift.shift.shift_date.strftime('%m/%d/%Y') %></td>
-                <td><%= emp_position_shift.shift.time.upcase %></td>
-                <td><%= emp_position_shift.employee.first_name.titleize %></td>
-                <td><%= emp_position_shift.position.name %></td>
-            <% end %>    
-            </tr>
-        </table>
 <% end %>
+                <% if @employees_position_shifts != nil %>
+                    <h2>Your Scheduled Shifts</h2>
+                        <table>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Employee</th>
+                                <th>Position</th>
+                            </tr>
+                            <% @employees_position_shifts.each do |emp_position_shift| %>
+                            <tr>
+                                <td><%= emp_position_shift.shift.shift_date.strftime('%m/%d/%Y') %></td>
+                                <td><%= emp_position_shift.shift.time.upcase %></td>
+                                <td><%= emp_position_shift.employee.first_name.titleize %></td>
+                                <td><%= emp_position_shift.position.name %></td>
+                            <% end %>    
+                            </tr>
+                        </table>
+                <% end %>
 
                 </div>
              </div>   
