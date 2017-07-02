@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+    get '/home' => 'employees#home'
     get '/signup' => 'employees#new'
     post '/signup' => 'employees#create'
 

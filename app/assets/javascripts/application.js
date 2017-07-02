@@ -12,6 +12,6 @@
 //
 //= require rails-ujs
 //= require jquery
-//= require vue
 //= require bootstrap-sprockets
+//= require vue
 //= require_tree .

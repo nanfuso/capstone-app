@@ -1,23 +1,38 @@
-<h1>Shifts Needing Extra Coverage</h1>
-<table>
-    <tr>
-        <th>Date</th>
-        <th>Time</th>
-    </tr>
-    <% @shifts.each do |shift| %>
-    <tr>
-        <td><%= shift.shift_date.strftime('%m/%d/%Y') %></td>
-        <td><%= shift.time.upcase %></td>
-        <td><%= link_to "Update", "/shifts/#{shift.id}/edit" %></td>
-        <td><%= link_to "Delete", "/shifts/#{shift.id}", method: :delete %></td>
-    <% end %>    
-    </tr>
-</table>
+<section id="our-story" class="section colored-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 wrapper-1">
+                <h2>Shifts Needing Extra Coverage</h2>
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                    </div>
+                    </div>
+                    </div>
+ 
+                    <% @shifts.each do |shift| %>
+                    <tr>
+                        <td><%= shift.shift_date.strftime('%m/%d/%Y') %></td>
+                        <td><%= shift.time.upcase %></td>
+                        <td><%= link_to "Update", "/shifts/#{shift.id}/edit", :class => "btn btn-flat flat-info" %>
+                        <%= link_to "Delete", "/shifts/#{shift.id}", method: :delete, :class => "btn btn-flat flat-inverse" %></td>
+                    <% end %>    
+                </table>
+                    </tr>
+                </div>
+        <div class="col-md-6 wrapper-1">
+            <h2>Any others?</h2>
+            <%= form_tag '/shifts', method: :post do %>
+            <div>Date: <input type="date" name="shift_date"></div>
+            <div>Time: <input type="text" name="time"></div>
+            <br>
+            <input type="submit" value="Create Request" class="btn btn-flat flat-inverse">
+            <% end %>
+        </div>
 
+        </div>
+    </div>
+</section>
 
-<h2>Any others?</h2>
-<%= form_tag '/shifts', method: :post do %>
-<div>Date: <input type="date" name="shift_date"></div>
-<div>Time: <input type="text" name="time"></div>
-<input type="submit" value="Create Request">
-<% end %>

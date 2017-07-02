@@ -1,5 +1,9 @@
 class EmployeesController < ApplicationController
 before_action :authenticate_admin!
+    def home
+
+    end
+
     def new
         render 'new.html.erb'
     end

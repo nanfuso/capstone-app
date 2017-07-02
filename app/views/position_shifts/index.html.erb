@@ -1,56 +1,69 @@
 <% if admin_signed_in? %>
-
-    <h2>Shifts to be scheduled</h2>
-    <%= form_tag '/positionshifts', method: :post do %>
-        
-    <!--     <select id="shift" onchange="changeShiftDetails()"> 
-          <% Shift.select(:shift_date).distinct.each do |shift| %>
-          <option value="<%= shift.shift_date %>"><%= shift.shift_date %></option> 
-          <% end %>
-        </select> 
-        <select id="shift_time"></select> 
-     -->
-        <div v-on:change="changeShiftDetails()">Date: <%= collection_select :shift, :shift_id, Shift.select(:shift_date).distinct, :id, :shift_date  %></div>
-        <div>Time: <%= collection_select :shift, :shift_id, Shift.all, :id, :time  %></div>
-        <div>Position: <%= collection_select :position, :position_id, Position.all, :id, :name %></div>
-        <div>Employee: <%= collection_select :employee, :employee_id, Employee.all, :id, :first_name %></div>
-        <input type="submit" value="Staff Shift">
-    <% end %>
-    <br>
-
-<h2>All Scheduled Shifts</h2>
-    <% if @position_shifts %>
-
-        <% @shifts.each do |shift| %>
-            <h3><%= shift.shift_date.strftime('%m/%d/%Y') %> - 
-            <%= shift.time.upcase %>
-            </h3>
-            <h5>Employees Needed For Shift: <%= shift.friendly_employees_needed %></h5>
-            <table>
-                <tr>
-                    <th>Employee</th>
-                    <th>Position</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-                </tr>
-                    <% shift.position_shifts.each do |position_shift|%>
-                <tr>
-                    <td><%= position_shift.employee.first_name.titleize %></td>
-                    <td><%= position_shift.position.name %></td>
-                    <td><%= link_to "Update", "/positionshifts/#{position_shift.id}/edit" %></td>
-                    <td><%= link_to "Delete", "/positionshifts/#{position_shift.id}", method: :delete %></td>
+<!-- /#page-title-wrapper -->
+<section id="our-story" class="section colored-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 wrapper-1">
+                        <h5 class="subpage-title">Shifts to be scheduled</h5>
+                        <%= form_tag '/positionshifts', method: :post do %>
                         
-                </tr>
-                    <% end %> 
-            </table>
-                
-        <% end %>   
-    <% end %>
+                            <div v-on:change="changeShiftDetails()">Date: <%= collection_select :shift, :shift_id, Shift.select(:shift_date).distinct, :id, :shift_date  %></div>
+                            <div>Time: <%= collection_select :shift, :shift_id, Shift.all, :id, :time  %></div>
+                            <div>Position: <%= collection_select :position, :position_id, Position.all, :id, :name %></div>
+                            <div>Employee: <%= collection_select :employee, :employee_id, Employee.all, :id, :first_name %></div>
+                            <input type="submit" value="Staff Shift" class="btn btn-flat flat-inverse" >
+                        <% end %>
+                        
+                    </div>
+                    <div class="col-md-6 wrapper-1">
+      
+                    </div>
+                </div>
+            </div>
+            <!-- /.container -->
+</section>
+<section id="faqs" class="section faqs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 content-wrapper">
+                <div class="special-wrapper wrapper-1">
+                        <h2>All Scheduled Shifts</h2>
+                            <% if @position_shifts %>
+                                <% @shifts.each do |shift| %>
+                                    <h5 class="subpage-title"><%= shift.shift_date.strftime('%m/%d/%Y') %> - 
+                                    <%= shift.time.upcase %>
+                                    </h5>
+                                    <h5>Employees Needed For Shift: <%= shift.friendly_employees_needed %></h5>
+                                    </a>
+                                </h4>
+                            </div>
+
+                                    <table>
+                                        <tr>
+                                            <th>Employee</th>
+                                            <th>Position</th>
+                                            <th>Update</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                            <% shift.position_shifts.each do |position_shift|%>
+                                        <tr>
+                                            <td><%= position_shift.employee.first_name.titleize %></td>
+                                            <td><%= position_shift.position.name %></td>
+                                            <td><%= link_to "Update", "/positionshifts/#{position_shift.id}/edit", :class => "btn btn-flat flat-info" %></td>
+                                            <td><%= link_to "Delete", "/positionshifts/#{position_shift.id}", method: :delete, :class => "btn btn-flat flat-inverse" %></td>
+                                                
+                                        </tr>
+                                            <% end %> 
+                                    </table>
+                                    <br>
+                                <% end %>   
+                            <% end %>
 
 
-<% end %>
+                        <% end %>
 
-<% if @employees_position_shifts %>
+
+<% if @employees_position_shifts != nil %>
     <h2>Your Scheduled Shifts</h2>
         <table>
             <tr>
@@ -69,3 +82,11 @@
             </tr>
         </table>
 <% end %>
+
+                </div>
+             </div>   
+        </div>
+                <!-- /.row -->
+    </div>
+            <!-- /.container -->
+</section>
