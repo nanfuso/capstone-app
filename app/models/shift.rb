@@ -6,7 +6,11 @@ class Shift < ApplicationRecord
 
     def friendly_employees_needed
 
-        all_events = Unirest.get("#{ ENV["API_HOST"] }/events/search/?location.address=Chicago&token=#{ ENV["OAUTH_TOKEN"] }").body["events"]
+        address =  "24 south michigan ave chicago IL"
+        street_address = address.split(' ').join('+')
+        distance = "1mi"
+
+        all_events = Unirest.get("#{ ENV["API_HOST"] }/events/search/?location.address=#{ street_address }&location.within=#{ distance }&token=#{ ENV["OAUTH_TOKEN"] }").body["events"]
         events_during_shift = all_events.select{ |event| shift_date >= event["start"]["local"].to_date && shift_date <= event["end"]["local"].to_date}
         
         patrons_from_events = 0
