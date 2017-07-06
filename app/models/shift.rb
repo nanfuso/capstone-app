@@ -5,7 +5,7 @@ class Shift < ApplicationRecord
     has_many :employees, through: :position_shifts
 
     def friendly_employees_needed
-        address = @current_employee.company.address
+        address = current_employee.company.address
         street_address = address.split(' ').join('+')
         distance = "1mi"
 
