@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
     belongs_to :shift
     belongs_to :venue
+    has_many :company_venues
+    has_many :companies, through: :company_venues
 
     # attr_accessor :id, :title, :location, :date
 
