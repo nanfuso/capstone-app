@@ -1,0 +1,4 @@
+<div><%= @company.name %> </div>
+<div><%= @company.address %></div>
+<div><%= link_to "Update", "companies/#{@company.id}/edit", :class=> "btn btn-flat flat-info" %>
+<%= link_to "Delete", "companies/#{@company.id}", method: :delete, :class=> "btn btn-flat flat-inverse" %></div>

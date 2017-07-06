@@ -94,6 +94,9 @@
                                   <li><a href="/shifts">Coverage</a></li>
                                   <li><a href="/signup">Add Employee</a></li>
                               </ul>
+                              <% if @current_employee %>
+                              <%= @current_employee.first_name %>
+                              <% end %>
                               <!-- /.nav -->
                           </div>
                           <!-- /.navbar-collapse -->

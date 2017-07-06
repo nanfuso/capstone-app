@@ -5,8 +5,12 @@ class Shift < ApplicationRecord
     has_many :employees, through: :position_shifts
 
     def friendly_employees_needed
+        address = @current_employee.company.address
+        street_address = address.split(' ').join('+')
+        distance = "1mi"
 
-        all_events = Unirest.get("#{ ENV["API_HOST"] }/events/search/?location.address=Chicago&token=#{ ENV["OAUTH_TOKEN"] }").body["events"]
+        all_events = Unirest.get("#{ ENV["API_HOST"] }/events/search/?location.address=#{ street_address }&location.within=#{ distance }&token=#{ ENV["OAUTH_TOKEN"] }").body["events"]
+
         events_during_shift = all_events.select{ |event| shift_date >= event["start"]["local"].to_date && shift_date <= event["end"]["local"].to_date}
         
         patrons_from_events = 0

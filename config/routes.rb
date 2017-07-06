@@ -28,4 +28,11 @@ Rails.application.routes.draw do
     delete '/positionshifts/:id' => 'position_shifts#delete'
 
     get '/events' => 'events#index'
+
+    get '/companies/new' => 'companies#new'
+    post '/companies' => 'companies#create'
+    get '/companies/:id' => 'companies#show'
+    get '/companies/:id/edit' => 'companies#edit'
+    patch 'companies/:id' => 'companies#update'
+    delete '/companies/:id' => 'companies#destroy'
 end
