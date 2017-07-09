@@ -1,5 +1,7 @@
 class ShiftsController < ApplicationController
     before_action :authenticate_admin!
+    before_action :authenticate_user!
+    
     def index
             @shifts = Shift.where("status = ?", "need coverage")
     end

@@ -33,7 +33,7 @@
                                     <h5 class="subpage-title"><%= shift.shift_date.strftime('%m/%d/%Y') %> - 
                                     <%= shift.time.upcase %>
                                     </h5>
-                                    <h5>Employees Needed For Shift: <%= shift.friendly_employees_needed %></h5>
+                                    <h5>Employees Needed For Shift: <%= shift.friendly_employees_needed - shift.employees.length%></h5>
                                     </a>
                                 </h4>
                             </div>

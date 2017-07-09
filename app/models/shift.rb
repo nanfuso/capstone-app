@@ -4,10 +4,14 @@ class Shift < ApplicationRecord
     has_many :position_shifts
     has_many :employees, through: :position_shifts
 
-    def friendly_employees_needed
-        address = current_employee.company.address
+    belongs_to :company
+
+def friendly_employees_needed
+
+        address = company.address || '24 S michigan ave chicago IL'
         street_address = address.split(' ').join('+')
-        distance = "1mi"
+        # distance = CompanyVenue.distance + 'mi' || "1mi"
+        distance = '1mi'
 
         all_events = Unirest.get("#{ ENV["API_HOST"] }/events/search/?location.address=#{ street_address }&location.within=#{ distance }&token=#{ ENV["OAUTH_TOKEN"] }").body["events"]
 
