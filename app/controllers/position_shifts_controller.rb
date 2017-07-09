@@ -5,7 +5,7 @@ class PositionShiftsController < ApplicationController
     def index
         @position_shifts = PositionShift.all
         @employees_position_shifts = PositionShift.where(employee_id: current_employee.id)
-        @shifts = Shift.all
+        @shifts = Shift.where("shift_date = ?", "2017-07-29" )
 
 
     end
