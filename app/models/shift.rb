@@ -38,4 +38,8 @@ def friendly_employees_needed
         end
     end
 
+    def width
+        width = (employees.length.to_f / friendly_employees_needed.to_f) * 100
+        width.to_i
+    end
 end

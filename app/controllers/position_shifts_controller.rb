@@ -4,9 +4,9 @@ class PositionShiftsController < ApplicationController
 
     def index
         @position_shifts = PositionShift.all
-        @employees_position_shifts = PositionShift.where(employee_id: current_employee.id)
-        @shifts = Shift.where("shift_date = ?", "2017-07-29" )
-
+        @employees_position_shifts = PositionShift.where(employee_id: current_employee.id) 
+        @shifts = Shift.where("shift_date >= ?", DateTime.now)
+        # @width = (position_shift.shift.employees.length / position_shift.shift.friendly_employees_needed) * 100
 
     end
 
