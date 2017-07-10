@@ -54,13 +54,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                        <table cellpadding="10">
-                                                            <h4><tr cellspacing="15">
+                                                        <table>
+                                                            <tr>
                                                                 <th>Employee</th>
                                                                 <th>Position</th>
                                                                 <th>Update</th>
                                                                 <th>Delete</th>
-                                                            </h4>
                                                             </tr>
                                                                 <% shift.position_shifts.each do |position_shift|%>
                                                                     <tr>
@@ -82,8 +81,8 @@
 <% end %>
                 <% if @employees_position_shifts != nil %>
                     <h2 class="subpage-title">Your Scheduled Shifts</h2>
-                        <table cellpadding="10">
-                            <tr cellspacing="15">
+                        <table>
+                            <tr>
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>Employee</th>
