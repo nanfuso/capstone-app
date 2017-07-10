@@ -4,24 +4,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 wrapper-1">
-                        <h5 class="subpage-title">Shifts to be scheduled</h5>
+                        <h5 class="subpage-title">Shifts to be scheduled
+                        </h5>
                         <%= form_tag '/positionshifts', method: :post do %>
                         
-                            <div v-on:change="changeShiftDetails()">Date: <%= collection_select :shift, :shift_id, Shift.where("shift_date >= ?", DateTime.now).select(:shift_date).distinct, :id, :shift_date  %></div>
+                            <div> Date: <%= collection_select :shift, :shift_id, Shift.where("shift_date >= ?", DateTime.now).select(:shift_date).distinct, :id, :shift_date  %></div>
                             <div>Time: <%= collection_select :shift, :shift_id, Shift.all, :id, :time  %></div>
                             <div>Position: <%= collection_select :position, :position_id, Position.all, :id, :name %></div>
                             <div>Employee: <%= collection_select :employee, :employee_id, Employee.all, :id, :first_name %></div>
                             <input type="submit" value="Staff Shift" class="btn btn-flat flat-inverse" >
-                        <% end %>
-                        
-                    </div>
-                    <div class="col-md-6 wrapper-1">
-      
+                        <% end %>    
                     </div>
                 </div>
             </div>
-            <!-- /.container -->
 </section>
+            
 <section id="faqs" class="section faqs">
     <div class="container">
         <div class="row">
@@ -30,54 +27,55 @@
                         <h2 class="subpage-title">All Scheduled Shifts</h2>
                             <% if @position_shifts %>
                                 <% @shifts.each do |shift| %>
-                                    <div class="panel-group">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-target="#collapse<%=shift.id%>" >
-                                        <%= shift.shift_date.strftime('%m/%d/%Y') %> - 
-                                        <%= shift.time.upcase %>
-                                        </a>
-                                    </h4> 
-                                </div>
-                                    <div id="<%= shift.id %> " class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            <h5>Employees Needed For Shift: <%= shift.friendly_employees_needed - shift.employees.length%></h5>
-                                <div class="row"> <!-- /.status bar -->
-                                    <div class="col-md-6 wrapper-1">
-                                        <div class="progress">
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" 
-                                                aria-valuenow= "<%= shift.width %> " aria-valuemin="0" aria-valuemax="100" 
-                                                style= "width: <%= shift.width %>%; " >
-                                                    <%= shift.width %>% Staffed
-                                                </div>
+                                    <div class="panel-group" role="tablist" aria-multiselectable="true">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="heading<%= shift.id %>">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse"  data-target="#collapse<%= shift.id %>">
+                                                            <%= shift.shift_date.strftime('%m/%d/%Y') %> - 
+                                                            <%= shift.time.upcase %>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse<%= shift.id %>" class="collapse" role="tabpanel" >
+                                                <div class="panel-body">
+                                                        <h5>Employees Needed For Shift: <%= shift.friendly_employees_needed - shift.employees.length%>
+                                                        </h5>
+                                                    <div class="row"> <!-- /.status bar -->
+                                                        <div class="col-md-6 wrapper-1">
+                                                            <div class="progress">
+                                                                <div class="progress progress-striped active">
+                                                                    <div class="progress-bar progress-bar-success" role="progressbar" 
+                                                                    aria-valuenow= "<%= shift.width %> " aria-valuemin="0" aria-valuemax="100" 
+                                                                    style= "width: <%= shift.width %>%; ">
+                                                                        <%= shift.width %>% Staffed
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        <table cellpadding="10">
+                                                            <h4><tr cellspacing="15">
+                                                                <th>Employee</th>
+                                                                <th>Position</th>
+                                                                <th>Update</th>
+                                                                <th>Delete</th>
+                                                            </h4>
+                                                            </tr>
+                                                                <% shift.position_shifts.each do |position_shift|%>
+                                                                    <tr>
+                                                                        <td><%= position_shift.employee.first_name.titleize %></td>
+                                                                        <td><%= position_shift.position.name %></td>
+                                                                        <td><%= link_to "Update", "/positionshifts/#{position_shift.id}/edit", :class => "btn btn-flat flat-info" %></td>
+                                                                        <td><%= link_to "Delete", "/positionshifts/#{position_shift.id}", method: :delete, :class => "btn btn-flat flat-inverse" %></td>
+                                                                            
+                                                                    </tr>
+                                                                <% end %> 
+                                                        </table>
+                                                </div>        
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                            <table cellpadding="10">
-                                                <h4><tr cellspacing="15">
-                                                    <th>Employee</th>
-                                                    <th>Position</th>
-                                                    <th>Update</th>
-                                                    <th>Delete</th></h4>
-                                                </tr>
-                                                    <% shift.position_shifts.each do |position_shift|%>
-                                                <tr>
-                                                    <td><%= position_shift.employee.first_name.titleize %></td>
-                                                    <td><%= position_shift.position.name %></td>
-                                                    <td><%= link_to "Update", "/positionshifts/#{position_shift.id}/edit", :class => "btn btn-flat flat-info" %></td>
-                                                    <td><%= link_to "Delete", "/positionshifts/#{position_shift.id}", method: :delete, :class => "btn btn-flat flat-inverse" %></td>
-                                                        
-                                                </tr>
-                                                    <% end %> 
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        
                                     <br>
                                 <% end %>   
                             <% end %>
@@ -101,8 +99,6 @@
                             </tr>
                         </table>
                 <% end %>
-
-                </div>
              </div>   
         </div>
                 <!-- /.row -->

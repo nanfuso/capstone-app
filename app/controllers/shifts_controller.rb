@@ -1,7 +1,7 @@
 class ShiftsController < ApplicationController
     before_action :authenticate_admin!
     before_action :authenticate_user!
-    
+
     def index
             @shifts = Shift.where("status = ?", "need coverage")
     end
@@ -10,7 +10,8 @@ class ShiftsController < ApplicationController
         shift = Shift.create!(
                         time: params[:time],
                         shift_date: params[:shift_date],
-                        status: "need coverage"
+                        status: "need coverage",
+                        company_id: current_employee.company.id
                             )
         # shift.save
        flash[:success] = "Schedule created"
