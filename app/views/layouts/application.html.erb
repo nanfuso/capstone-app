@@ -94,14 +94,17 @@ th {
                                       <div class="collapse navbar-collapse navbar-ex1-collapse">
                                           <ul class="nav navbar-nav">
                                               <li><a href="/">Home</a>
+                                              <% if admin_signed_in? %>
                                               <li class="dropdown active">
                                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manager Items</a>
                                                   <ul class="dropdown-menu">
                                                         <li><a href="/shifts">Shifts Needing Extra Coverage</a></li>
                                                         <li><a href="/signup">Add New Employee</a></li>
-                                                        <li><a href="/companies/#{current_employee.company.id}/edit"> Edit Company Info</a></li>
+                                                        <li><a href="/companies/<%=current_employee.company.id %>/edit"> Edit Company Info</a></li>
+                                                        <li><a href="/companycategories"> Events Affecting You</a></li>
                                                     </ul>
                                                 </li>
+                                                <% end %>
                                                         <% if current_employee %>
                                                         <li><a href="/logout">Logout</a></li>
                                                        <% end %>

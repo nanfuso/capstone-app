@@ -35,4 +35,5 @@ Rails.application.routes.draw do
     delete '/companies/:id' => 'companies#destroy'
 
     get '/companycategories' => 'company_categories#index'
+
 end

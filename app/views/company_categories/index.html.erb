@@ -1,4 +1,22 @@
-<% @categories.each do |category| %>
-    <%= category["name"] %>
-    <br>
-<% end %>
+<section id="faqs" class="section faqs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 content-wrapper">
+                <div class="special-wrapper wrapper-1">
+                    <% @categories.each do |cat| %>
+                        <div>
+                            <h3><%= cat["name"] %></h3>
+
+                            <%= form_tag '/company_categories', method: :post do %>
+                                    Relevant: <%= radio_button_tag('relevance', :yes) %>
+                                    Not Relevant: <%= radio_button_tag('relevance', :no) %>
+                                    <input type="hidden" name="category_id" value="#{cat.category_id}">
+                            <% end %>
+                        </div>
+                    <% end %>
+                                <%= submit_tag 'Submit', :class => "btn btn-flat flat-inverse" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
