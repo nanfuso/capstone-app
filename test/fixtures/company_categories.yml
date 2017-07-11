@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  relevance: 1
   company_id: 1
-  venue_id: 1
-  relevance: MyString
+  category_id: 1
 
 two:
+  relevance: 1
   company_id: 1
-  venue_id: 1
-  relevance: MyString
+  category_id: 1

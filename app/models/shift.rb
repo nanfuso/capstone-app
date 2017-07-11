@@ -1,9 +1,6 @@
 class Shift < ApplicationRecord
-    has_many :events
-    has_many :company_venues, through: :events
     has_many :position_shifts
     has_many :employees, through: :position_shifts
-
     belongs_to :company
 
 def friendly_employees_needed
@@ -13,7 +10,7 @@ def friendly_employees_needed
         # distance = CompanyVenue.distance + 'mi' || "1mi"
         distance = '1mi'
 
-        all_events = Unirest.get("#{ ENV["API_HOST"] }/events/search/?location.address=#{ street_address }&location.within=#{ distance }&token=#{ ENV["OAUTH_TOKEN"] }").body["events"]
+        all_events = company.events
 
         events_during_shift = all_events.select{ |event| shift_date >= event["start"]["local"].to_date && shift_date <= event["end"]["local"].to_date}
         

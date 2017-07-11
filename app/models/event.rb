@@ -1,28 +1,18 @@
-class Event < ApplicationRecord
-    belongs_to :shift
-    belongs_to :venue
-    has_many :company_venues
-    has_many :companies, through: :company_venues
+class Event
+    attr_accessor :name, :category_id, :date
 
-    # attr_accessor :id, :title, :location, :date
+    def initialize(options)
+        @name = options["name"]
+        @category = Category.find_or_create_by(options["category_id"])
 
-    # def initialize(hash_options)
-    #     @id = hash_options["id"]
-    #     @title = hash_options["title"]
-    #     @location = hash_options["location"]
-    #     @date = hash_options["date"]
-    # end
+        unless @category.name
+            category_response = Unirest.get("#{ ENV["API_HOST"] }/categories/#{ category_id }?token=#{ ENV["OAUTH_TOKEN"] }").body["name"]
+            @category.update(name: category_response)
+        end
+        @date = options["date"]
+    end
 
-    # def self.find(id)
-    #     Event.new(Unirest.get('http://api.eventful.com/rest/').body)
-    # end
-
-    # def self.all
-    #     event_hashes = Unirest.get('http://api.eventful.com/rest/').body
-    #     events = []
-    #     event_hases.each do |event_hash|
-    #         events << Event.new(event_hash)
-    #     end
-    #     events
-
+    def relevance(company)
+        company.company_categories.where(category_id: category_id).first.relevance
+    end
 end
