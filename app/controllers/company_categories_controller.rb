@@ -9,7 +9,11 @@ class CompanyCategoriesController < ApplicationController
     end
 
     def create
-        
+        @company_category = CompanyCategory.create!(
+                                                    company_id: current_employee.company.id,
+                                                    category_id: ,
+                                                    relevance: params[:relevance]
+                                                    )
     end
 
 end
