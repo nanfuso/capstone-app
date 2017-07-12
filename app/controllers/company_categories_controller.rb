@@ -14,10 +14,11 @@ class CompanyCategoriesController < ApplicationController
                                                     category_id: params[:category_id],
                                                     relevance: params[:relevance]
                                                     )
+        
         if @company_category.save
             flash[:success] = "Event categories added!"
-            redirect_to '/'
-        else redirect_to '/'
+            redirect_to '/companycategories'
+        else redirect_to '/companycategories'
             flash[:warning] = "Please submit again"
         end
     end

@@ -13,7 +13,7 @@ class Company < ApplicationRecord
         distance = "1mi"
 
         responses = Unirest.get("#{ ENV["API_HOST"] }/events/search/?location.address=#{ street_address }&location.within=#{ distance }&token=#{ ENV["OAUTH_TOKEN"] }").body["events"]
-        responses = responses.first(20)
+        responses = responses.first(5)
 
         responses.each do |event_info|
             event = Event.new(event_info)

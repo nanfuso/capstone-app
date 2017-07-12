@@ -2,8 +2,8 @@ class ShiftsController < ApplicationController
     before_action :authenticate_admin!
 
     def index
-        @shifts = Shift.where("status = ?", "need coverage")
-        @shift = Shift.find(21)
+        @shifts = Shift.where("shift_date >= ?", DateTime.now)
+        
     end
 
     def create

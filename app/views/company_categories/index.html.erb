@@ -3,17 +3,17 @@
         <div class="row">
             <div class="col-md-9 content-wrapper">
                 <div class="special-wrapper wrapper-1">
-                        <% @categories.each do |cat| %>
                     <%= form_tag '/companycategories', method: :post do %>
+                        <% @categories.each do |cat| %>
                             <div>
-                                <h3><%= cat["name"] %></h3>
-
-                                Relevant: <%= radio_button_tag('relevance', :yes) %>
-                                Not Relevant: <%= radio_button_tag('relevance', :no) %>
+                                <h3><%= cat["name"] %>
+                                </h3>
+                                Relevant? <input type="checkbox" name="relevance" value="yes">
                                 <input type="hidden" name="category_id" value="#{cat.category_id}">
+                                
+                            </div>
                         <% end %>
                                 <%= submit_tag 'Submit', :class => "btn btn-flat flat-inverse" %>
-                            </div>
                     <% end %>
                 </div>
             </div>
