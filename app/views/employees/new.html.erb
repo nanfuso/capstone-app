@@ -2,8 +2,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 wrapper-1">
-                        <h5 class="subpage-title">Add New Employee</h5>
-
+                        <h3 class="subpage-title">Add New Employee</h3>
+                        <h4>
+            
                         <%= form_tag '/signup', method: :post do %>
                             <div>First Name:<input type="text" name="first_name"></div>
                             <div>Last Name:<input type="text" name="last_name"></div>
@@ -15,7 +16,7 @@
                             <div>Manager Access? </div>
                             <div><input type="submit" value="Create Account" class="btn btn-flat flat-inverse"></div>
                         <% end %>
-
+                        </h4>
                     </div>
                 </div>
             </div>
