@@ -3,6 +3,7 @@ class ShiftsController < ApplicationController
 
     def index
         @shifts = Shift.where("status = ?", "need coverage")
+        @shift = Shift.find(21)
     end
 
     def create

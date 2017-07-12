@@ -12,13 +12,13 @@ def friendly_employees_needed
 
         all_events = company.events
 
-        events_during_shift = all_events.select{ |event| shift_date >= event["start"]["local"].to_date && shift_date <= event["end"]["local"].to_date}
+        events_during_shift = all_events.select{ |event| shift_date = event.date }
         
         patrons_from_events = 0
 
         if events_during_shift
             events_during_shift.each do |event|
-                patrons_from_events += event["capacity"] * 0.02
+                patrons_from_events += event.capacity * 0.02
             end
         end
         

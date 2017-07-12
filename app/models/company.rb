@@ -12,14 +12,14 @@ class Company < ApplicationRecord
         street_address = company_address.split(' ').join('+')
         distance = "1mi"
 
-        responses = @events = Unirest.get("#{ ENV["API_HOST"] }/events/search/?location.address=#{ street_address }&location.within=#{ distance }&token=#{ ENV["OAUTH_TOKEN"] }").body["events"]
-        response = responses.first(20)
+        responses = Unirest.get("#{ ENV["API_HOST"] }/events/search/?location.address=#{ street_address }&location.within=#{ distance }&token=#{ ENV["OAUTH_TOKEN"] }").body["events"]
+        responses = responses.first(20)
 
-        # response.each do |event_info|
-        #     event = Event.create(event_info)
-        #     collection << event
-        # end
+        responses.each do |event_info|
+            event = Event.new(event_info)
+            collection << event
+        end
         
-        # collection
+        collection
     end
 end

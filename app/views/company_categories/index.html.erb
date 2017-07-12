@@ -3,18 +3,18 @@
         <div class="row">
             <div class="col-md-9 content-wrapper">
                 <div class="special-wrapper wrapper-1">
-                    <% @categories.each do |cat| %>
-                        <div>
-                            <h3><%= cat["name"] %></h3>
+                        <% @categories.each do |cat| %>
+                    <%= form_tag '/companycategories', method: :post do %>
+                            <div>
+                                <h3><%= cat["name"] %></h3>
 
-                            <%= form_tag '/company_categories', method: :post do %>
-                                    Relevant: <%= radio_button_tag('relevance', :yes) %>
-                                    Not Relevant: <%= radio_button_tag('relevance', :no) %>
-                                    <input type="hidden" name="category_id" value="#{cat.category_id}">
-                            <% end %>
-                        </div>
-                    <% end %>
+                                Relevant: <%= radio_button_tag('relevance', :yes) %>
+                                Not Relevant: <%= radio_button_tag('relevance', :no) %>
+                                <input type="hidden" name="category_id" value="#{cat.category_id}">
+                        <% end %>
                                 <%= submit_tag 'Submit', :class => "btn btn-flat flat-inverse" %>
+                            </div>
+                    <% end %>
                 </div>
             </div>
         </div>
