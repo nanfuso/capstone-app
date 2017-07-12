@@ -7,7 +7,6 @@ class PositionShiftsController < ApplicationController
         @employees_position_shifts = PositionShift.where(employee_id: current_employee.id) 
         @shifts = Shift.where("shift_date >= ?", DateTime.now)
         # @width = (position_shift.shift.employees.length / position_shift.shift.friendly_employees_needed) * 100
-
     end
 
     def create

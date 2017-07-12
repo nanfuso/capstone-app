@@ -4,15 +4,25 @@
             <div class="col-md-9 content-wrapper">
                 <div class="special-wrapper wrapper-1">
                     <%= form_tag '/companycategories', method: :post do %>
+                        <table class="table">
+                            <thead>
+                            <tr class="info">
+                                <th>Category </th>
+                                <th>Will This Type of Event Affect You?</th>
+                                <th> </th>
+                            </tr>
+                            </thead>
                         <% @categories.each do |cat| %>
                             <div>
-                                <h3><%= cat["name"] %>
+                            <tr>
+                                <td><h4><%= cat["name"] %></h4></td>
                                 </h3>
-                                Relevant? <input type="checkbox" name="relevance" value="yes">
+                                <td><input type="checkbox" name="relevance" value="yes"><td>
                                 <input type="hidden" name="category_id" value="#{cat.category_id}">
-                                
+                               </tr> 
                             </div>
                         <% end %>
+                        </table>
                                 <%= submit_tag 'Submit', :class => "btn btn-flat flat-inverse" %>
                     <% end %>
                 </div>

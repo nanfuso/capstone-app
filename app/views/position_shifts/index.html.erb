@@ -1,3 +1,5 @@
+
+
 <% if admin_signed_in? %>
 <!-- /#page-title-wrapper -->
 <section id="our-story" class="section colored-wrapper">
@@ -15,14 +17,50 @@
                             <input type="submit" value="Staff Shift" class="btn btn-flat flat-inverse" >
                         <% end %>    
                     </div>
+
+                    <div class="col-md-6 wrapper-1">  
+                    </div>
+
                 </div>
             </div>
 </section>
+<% end %>
             
 <section id="faqs" class="section faqs">
     <div class="container">
         <div class="row">
-            <div class="col-md-9 content-wrapper">
+
+            <div class="col-md-6 content-wrapper">
+                <div class="special-wrapper wrapper-1">
+                <% if @employees_position_shifts != nil %>
+                    <h2 class="subpage-title">Your Scheduled Shifts</h2>
+                        <table class="table">
+                            <thead>
+                            <tr class="info">
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Employee</th>
+                                <th>Position</th>
+                            </tr>
+                            </thead>
+                            <% @employees_position_shifts.each do |emp_position_shift| %>
+                            <tr>
+                                <td><%= emp_position_shift.shift.shift_date.strftime('%m/%d/%Y') %></td>
+                                <td><%= emp_position_shift.shift.time.upcase %></td>
+                                <td><%= emp_position_shift.employee.first_name.titleize %></td>
+                                <td><%= emp_position_shift.position.name %></td>
+                            <% end %>    
+                            </tr>
+                        </table>
+                <% end %>
+                </div>
+            </div>
+
+
+
+
+<% if admin_signed_in? %>
+            <div class="col-md-6 content-wrapper">
                 <div class="special-wrapper wrapper-1">
                         <h2 class="subpage-title">All Scheduled Shifts</h2>
                             <% if @position_shifts %>
@@ -54,13 +92,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                        <table>
-                                                            <tr>
+                                                        <table class="table">
+                                                            <thead>
+                                                            <tr class="info">
                                                                 <th>Employee</th>
                                                                 <th>Position</th>
                                                                 <th>Update</th>
                                                                 <th>Delete</th>
                                                             </tr>
+                                                            </thead>
                                                                 <% shift.position_shifts.each do |position_shift|%>
                                                                     <tr>
                                                                         <td><%= position_shift.employee.first_name.titleize %></td>
@@ -79,25 +119,6 @@
                                 <% end %>   
                             <% end %>
 <% end %>
-                <% if @employees_position_shifts != nil %>
-                    <h2 class="subpage-title">Your Scheduled Shifts</h2>
-                        <table>
-                            <tr>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Employee</th>
-                                <th>Position</th>
-                            </tr>
-                            <% @employees_position_shifts.each do |emp_position_shift| %>
-                            <tr>
-                                <td><%= emp_position_shift.shift.shift_date.strftime('%m/%d/%Y') %></td>
-                                <td><%= emp_position_shift.shift.time.upcase %></td>
-                                <td><%= emp_position_shift.employee.first_name.titleize %></td>
-                                <td><%= emp_position_shift.position.name %></td>
-                            <% end %>    
-                            </tr>
-                        </table>
-                <% end %>
              </div>   
         </div>
                 <!-- /.row -->

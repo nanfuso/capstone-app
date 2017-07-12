@@ -1,6 +1,36 @@
-<%= form_tag "/companies/#{@company.id}", method: :patch do %>
-Name: <input type="text" name="name" value=" <%= @company.name %>">
-Address: <input type="text" name="address" value=" <%= @company.address %>">
-<input type="submit" value="Submit">
-<a href="/">Cancel</a>
-<% end %>
+<section id="our-story" class="section colored-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 wrapper-1">
+
+                    <%= form_tag "/companies/#{@company.id}", method: :patch do %>
+                    <div>Name: <input type="text" name="name" value=" <%= @company.name %>"></div>
+                    <div>Address: <input type="text" name="address" value=" <%= @company.address %>"></div>
+                    <div><input type="submit" value="Submit" class="btn btn-flat flat-info">
+                    <a href="/" class="btn btn-flat flat-inverse">Cancel</a></div>
+                    <% end %>
+
+                </div>
+
+                <div class="col-md-6 wrapper-1"></div>
+                    <div id="map"></div>
+                        <script>
+                          function initMap() {
+                            var uluru = {lat: 41.8827, lng: -87.6233};
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                              zoom: 14,
+                              center: uluru
+                            });
+                            var marker = new google.maps.Marker({
+                              position: uluru,
+                              map: map
+                            });
+                          }
+                        </script>
+                        <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_TOKEN'] %>&callback=initMap">
+                        </script>
+                    </div>
+            </div>
+        </div>
+</section>

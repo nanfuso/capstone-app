@@ -3,15 +3,22 @@
   <head>
   <style>
     table {
-  border-collapse: collapse;
-  border-spacing: 10px;
-  width: 80%;
-}
-td,
-th {
-  padding: 10px;
-  text-align: center;
-}
+        font-family: arial, sans-serif;       
+        width: 50%;
+    }
+
+    td, th {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+       #map {
+        height: 400px;
+        width: 100%;
+       }
   </style>
     <title>ShiftsNGigs</title>
     <%= csrf_meta_tags %>
