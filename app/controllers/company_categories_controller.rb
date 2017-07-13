@@ -9,14 +9,13 @@ class CompanyCategoriesController < ApplicationController
     end
 
     def create
-        category_ids = params[:category][:category_id]
-        category_relevances = params[:category][:relevance]
+        categories_relevance = params[:relevance]
 
 
         @company_category = CompanyCategory.create(
                                                     company_id: current_employee.company.id,
                                                     category_id: [:category_ids][:ids],
-                                                    relevance: params[:category][:relevance]
+                                                    relevance: [:relevance]
                                                     )
 
         
