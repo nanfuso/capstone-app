@@ -4,26 +4,22 @@
         <div class="col-md-2 content-wrapper"></div>
             <div class="col-md-8 content-wrapper">
                 <div class="special-wrapper wrapper-1">
-                <h3 class="subpage-title">Category Events</h3>
+                <h3 class="subpage-title">Event Categories</h3>
                     <%= form_tag '/companycategories', method: :post do %>
                         <table class="table">
                             <thead>
                             <tr class="info">
                                 <th>Category </th>
-                                <th>Will This Type of Event Affect You?</th>
-                                <th> </th>
+                                <th>Which Events Will Affect You?</th>
                             </tr>
                             </thead>
-                        <% @categories.each do |cat| %>
-                            <div>
-                            <tr>
-                                <td><h4><%= cat["name"] %></h4></td>
-                                </h3>
-                                <td><input type="checkbox" name="relevance" value="yes"><td>
-                                <input type="hidden" name="category_id" value="#{cat.id}">
+                                <%= collection_check_boxes(:category, :category_id, Category.all, :id, :name, include_hidden: false) do |b| %>
+                                <tr>
+                                    <h4><td><%= b.label %></td>
+                                    <td><%= b.check_box %></td></h4>
                                </tr> 
+                                <% end %>
                             </div>
-                        <% end %>
                         </table>
                                 <%= submit_tag 'Submit', :class => "btn btn-flat flat-inverse" %>
                     <% end %>

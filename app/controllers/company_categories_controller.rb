@@ -2,7 +2,7 @@ class CompanyCategoriesController < ApplicationController
     before_action :authenticate_user!
     before_action :authenticate_admin!
     def index
-        @categories = Unirest.get("#{ ENV["API_HOST"] }/categories?token=#{ ENV["OAUTH_TOKEN"] }").body["categories"]
+        @categories = Category.all
     end
 
     def new
@@ -12,7 +12,7 @@ class CompanyCategoriesController < ApplicationController
         @company_category = CompanyCategory.create(
                                                     company_id: current_employee.company.id,
                                                     category_id: params[:category_id],
-                                                    relevance: params[:relevance]
+                                                    relevance: 'yes'
                                                     )
         
         if @company_category.save
