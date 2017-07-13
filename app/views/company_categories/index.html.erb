@@ -19,6 +19,7 @@
                                 </tr>
                             </thead>
                             <% @categories.each do |category| %>
+                                <% if category.name %>
                                 <tr>
                                   <td><h4><%= category.name %></td></h4>
                                   <td><input type="radio" name="relevance[<%= category.id %>]" value="0" checked="checked"></td>
@@ -28,6 +29,7 @@
                                   <td><input type="radio" name="relevance[<%= category.id %>]" value="4"></td>
                                   <td><input type="radio" name="relevance[<%= category.id %>]" value="5"></td>
                                 </tr>
+                                <% end %>
                             <% end %>
                         </table>
                     <%= submit_tag 'Submit', :class => "btn btn-flat flat-inverse" %>
