@@ -23,23 +23,23 @@ def friendly_employees_needed
                 @patrons_from_events = 0
 
                 @events_with_1_relevance.each do |event|
-                    @patrons_from_events += event.capacity * 0.02
+                    @patrons_from_events += event.capacity * 0.05
                 end
                 
                 @events_with_2_relevance.each do |event|
-                    @patrons_from_events += event.capacity * 0.04
+                    @patrons_from_events += event.capacity * 0.08
                 end
 
                 @events_with_3_relevance.each do |event|
-                    @patrons_from_events += event.capacity * 0.04
+                    @patrons_from_events += event.capacity * 0.12
                 end
 
                 @events_with_4_relevance.each do |event|
-                    @patrons_from_events += event.capacity * 0.06
+                    @patrons_from_events += event.capacity * 0.15
                 end
 
                 @events_with_5_relevance.each do |event|
-                    @patrons_from_events += event.capacity * 0.08
+                    @patrons_from_events += event.capacity * 0.20
                 end
         else
             @events_during_shift = all_events.select{ |event| shift_date = event.date }
@@ -53,7 +53,7 @@ def friendly_employees_needed
             end
         end
 
-        capacity = @patrons_from_events + 30
+        capacity = @patrons_from_events + 150
         max_employees_on_floor = 15
         if capacity > 500
             employees_needed = max_employees_on_floor

@@ -1,42 +1,24 @@
 <section id="faqs" class="section faqs">
     <div class="container">
-        <div class="row">
         <div class="col-md-2 content-wrapper"></div>
             <div class="col-md-8 content-wrapper">
                 <div class="special-wrapper wrapper-1">
-                <h3 class="subpage-title">Event Categories</h3>
-                    <%= form_tag '/companycategories', method: :post do %>
-                        <table class="table">
-                            <thead >
-                                <tr class="info">
-                                    <th>Category</th>
-                                    <th>0</th>
-                                    <th>1</th>
-                                    <th>2</th>
-                                    <th>3</th>
-                                    <th>4</th>
-                                    <th>5</th>
-                                </tr>
-                            </thead>
-                            <% @categories.each do |category| %>
-                                <% if category.name %>
-                                <tr>
-                                  <td><h4><%= category.name %></td></h4>
-                                  <td><input type="radio" name="relevance[<%= category.id %>]" value="0" checked="checked"></td>
-                                  <td><input type="radio" name="relevance[<%= category.id %>]" value="1"></td>
-                                  <td><input type="radio" name="relevance[<%= category.id %>]" value="2"></td>
-                                  <td><input type="radio" name="relevance[<%= category.id %>]" value="3"></td>
-                                  <td><input type="radio" name="relevance[<%= category.id %>]" value="4"></td>
-                                  <td><input type="radio" name="relevance[<%= category.id %>]" value="5"></td>
-                                </tr>
-                                <% end %>
-                            <% end %>
-                        </table>
-                    <%= submit_tag 'Submit', :class => "btn btn-flat flat-inverse" %>
+                <h3 class="subpage-title">Categories that Affect You</h3>
+                    <% @company_categories.each do |category| %>
+                        <%= category.category.name %>
+                        
+                            <div class="progress">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-#{category.progress_color}" role="progressbar" 
+                                    aria-valuenow= "<%= category.width %> " aria-valuemin="0" aria-valuemax="100" 
+                                    style= "width: <%= category.width %>%; ">
+                                    </div>
+                                </div>
+                            </div>
+
                     <% end %>
                 </div>
-            </div>
+                <%= link_to "Update", "/companycategories/#{position_shift.id}", method: :delete, :class => "btn btn-flat flat-info" %>
         <div class="col-md-2 content-wrapper"></div>
-        </div>
     </div>
 </section>

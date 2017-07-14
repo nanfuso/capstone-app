@@ -2,10 +2,11 @@ class CompanyCategoriesController < ApplicationController
     before_action :authenticate_user!
     before_action :authenticate_admin!
     def index
-        @categories = Category.all
+        @company_categories = CompanyCategory.all
     end
 
     def new
+        @categories = Category.all
     end
 
     def create
