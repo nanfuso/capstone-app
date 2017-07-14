@@ -12,7 +12,6 @@
                             <div>Password:<input type="password" name="password"></div>
                             <div>Confirm password:<input type="password" name="password_confirmation"></div>
                             <div> Company: <%= collection_select :company, :company_id, Company.all, :id, :name %></div>
-                            <div>Position: <%= collection_select :position, :position_id, Position.all, :id, :name %></div>
                             <div>Manager Access? </div>
                             <div><input type="submit" value="Create Account" class="btn btn-flat flat-inverse"></div>
                         <% end %>
