@@ -10,21 +10,50 @@ def friendly_employees_needed
         # distance = CompanyVenue.distance + 'mi' || "1mi"
         distance = '1mi'
 
+       
         all_events = company.events
 
-        1_relevance = all_events.select{ |event| shift_date = event.date && event}
-        events_during_shift = all_events.select{ |event| shift_date = event.date }
+        if CompanyCategory.all.length > 0
+            @events_with_1_relevance = all_events.select{ |event| shift_date = event.date && event.category.relevance == 1}
+            @events_with_2_relevance = all_events.select{ |event| shift_date = event.date && event.category.relevance == 2}
+            @events_with_3_relevance = all_events.select{ |event| shift_date = event.date && event.category.relevance == 3}
+            @events_with_4_relevance = all_events.select{ |event| shift_date = event.date && event.category.relevance == 4}
+            @events_with_5_relevance = all_events.select{ |event| shift_date = event.date && event.category.relevance == 5}
+                
+                @patrons_from_events = 0
 
-        
-        patrons_from_events = 0
+                @events_with_1_relevance.each do |event|
+                    @patrons_from_events += event.capacity * 0.02
+                end
+                
+                @events_with_2_relevance.each do |event|
+                    @patrons_from_events += event.capacity * 0.04
+                end
 
-        if events_during_shift
-            events_during_shift.each do |event|
-                patrons_from_events += event.capacity * 0.02
+                @events_with_3_relevance.each do |event|
+                    @patrons_from_events += event.capacity * 0.04
+                end
+
+                @events_with_4_relevance.each do |event|
+                    @patrons_from_events += event.capacity * 0.06
+                end
+
+                @events_with_5_relevance.each do |event|
+                    @patrons_from_events += event.capacity * 0.08
+                end
+        else
+            @events_during_shift = all_events.select{ |event| shift_date = event.date }
+
+            @patrons_from_events = 0
+
+            if events_during_shift
+                events_during_shift.each do |event|
+                    @patrons_from_events += event.capacity * 0.02
+                end
             end
         end
-        
-        capacity = patrons_from_events + 30
+
+        capacity = @patrons_from_events + 30
         max_employees_on_floor = 15
         if capacity > 500
             employees_needed = max_employees_on_floor
