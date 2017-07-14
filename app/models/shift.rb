@@ -12,7 +12,9 @@ def friendly_employees_needed
 
         all_events = company.events
 
+        1_relevance = all_events.select{ |event| shift_date = event.date && event}
         events_during_shift = all_events.select{ |event| shift_date = event.date }
+
         
         patrons_from_events = 0
 

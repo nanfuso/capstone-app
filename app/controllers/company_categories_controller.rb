@@ -9,14 +9,16 @@ class CompanyCategoriesController < ApplicationController
     end
 
     def create
-        categories_relevance = params[:relevance]
+        input = params[:relevance]
 
+        input.each do |cat_id, cat_rel|
 
-        @company_category = CompanyCategory.create(
+            @company_category = CompanyCategory.create!(
                                                     company_id: current_employee.company.id,
-                                                    category_id: [:category_ids][:ids],
-                                                    relevance: [:relevance]
+                                                    category_id: cat_id,
+                                                    relevance: cat_rel
                                                     )
+        end
 
         
         if @company_category.save
