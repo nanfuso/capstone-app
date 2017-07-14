@@ -22,7 +22,7 @@ class Company < ApplicationRecord
         end
 
         responses = Unirest.get("#{ ENV["API_HOST"] }/events/search/?location.address=#{ street_address }&location.within=#{ distance }&categories=#{ @category_string }&token=#{ ENV["OAUTH_TOKEN"] }").body["events"]
-        responses = responses.first(50)
+        responses = responses.first(100)
 
         responses.each do |event_info|
             event = Event.new(event_info)

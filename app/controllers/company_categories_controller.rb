@@ -30,4 +30,10 @@ class CompanyCategoriesController < ApplicationController
         end
     end
 
+    def destroy
+        company_categories = CompanyCategory.all
+        company_categories.destroy_all
+        redirect_to '/companycategories/new'
+    end
+
 end

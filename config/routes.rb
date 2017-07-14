@@ -37,6 +37,6 @@ Rails.application.routes.draw do
     get '/companycategories' => 'company_categories#index'
     get '/companycategories/new' => 'company_categories#new'
     post '/companycategories' => 'company_categories#create'
-    delete '/companycategories/' => 'company_categories#destroy'
+    delete '/companycategories' => 'company_categories#destroy'
 
 end

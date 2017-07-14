@@ -45,7 +45,7 @@ class PositionShiftsController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
         position_shift = PositionShift.find(params[:id])
         position_shift.destroy
         flash[:danger] = "Shift no longer covered"
