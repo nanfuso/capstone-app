@@ -77,8 +77,16 @@
                                             </div>
                                             <div id="collapse<%= shift.id %>" class="panel-collapse collapse">
                                                 <div class="panel-body">
-                                                        <h5>Employees Needed For Shift:<%= shift.friendly_employees_needed - shift.employees.length%>
+                                                        <h5>Total Employees Needed For Shift:<%= shift.friendly_employees_needed - shift.employees.length%>
                                                         </h5>
+                                                        <h6>
+                                                        <div>Managers: <%= shift.managers_needed - PositionShift.where('shift_id = ? AND position_id = ?', shift.id, 1).length %></div>
+                                                        <div>Servers: <%= shift.servers_needed - PositionShift.where('shift_id = ? AND position_id = ?', shift.id, 2).length %></div>
+                                                        <div>Bartenders: <%= shift.bartenders_needed - PositionShift.where('shift_id = ? AND position_id = ?', shift.id, 4).length %></div>
+                                                        <div>Hosts: <%= shift.hosts_needed - PositionShift.where('shift_id = ? AND position_id = ?', shift.id, 5).length %></div>
+                                                        <div>HOH: <%= shift.hoh_needed - PositionShift.where('shift_id = ? AND position_id = ?', shift.id, 3).length %></div>
+                                                        </h6>
+
                                                     <div class="row"> <!-- /.status bar -->
                                                         <div class="col-md-6 wrapper-1">
                                                             <div class="progress">
