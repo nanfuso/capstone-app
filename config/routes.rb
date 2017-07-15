@@ -19,13 +19,13 @@ Rails.application.routes.draw do
     post '/positions' => 'positions#create'
     get '/positions/:id/edit' => 'positions#edit'
     patch '/positions/:id' => 'positions#update'
-    delete '/positions/:id' => 'positions#delete'
+    delete '/positions/:id' => 'positions#destroy'
 
     get '/' => 'position_shifts#index'
     post '/positionshifts' => 'position_shifts#create'
     get '/positionshifts/:id/edit' => 'position_shifts#edit'
     patch '/positionshifts/:id' => 'position_shifts#update'
-    delete '/positionshifts/:id' => 'position_shifts#delete'
+    delete '/positionshifts/:id' => 'position_shifts#destroy'
 
     get '/companies/new' => 'companies#new'
     post '/companies' => 'companies#create'

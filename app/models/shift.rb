@@ -53,17 +53,46 @@ def friendly_employees_needed
             end
         end
 
-        capacity = @patrons_from_events + 150
-        max_employees_on_floor = 15
+        capacity = @patrons_from_events + 50
+        max_employees_on_floor = 26
         if capacity > 500
             employees_needed = max_employees_on_floor
-        elsif capacity < 100
-            employees_needed = capacity * 0.08
-            employees_needed.ceil
-        elsif
-            employees_needed = 8 + ((capacity - 100)/75)
-            employees_needed.ceil
+            @managers_needed = 2
+            @servers_needed = 12
+            @bartenders_needed = 2
+            @hoh_needed = 6
+            @hosts_needed = 4
+        else capacity < 100
+            @managers_needed = 1
+            @servers_needed = capacity * 0.08
+                @servers_needed.ceil
+            @bartenders_needed = 1
+            @hoh_needed = capacity * 0.04
+                @hoh_needed.ceil
+            @hosts_needed = capacity * 0.02
+                @hosts_needed.ceil
+            employees_needed = @managers_needed + @servers_needed + @bartenders_needed + @hoh_needed + @hosts_needed
         end
+    end
+
+    def servers_needed
+        @servers_needed
+    end
+
+    def bartenders_needed
+        @bartenders_needed
+    end
+
+    def hoh_needed
+        @hoh_needed
+    end
+
+    def hosts_needed
+        @hosts_needed
+    end
+
+    def managers_needed
+        @managers_needed
     end
 
     def width

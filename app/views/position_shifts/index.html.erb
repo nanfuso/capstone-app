@@ -32,7 +32,7 @@
 
             <div class="col-md-6 content-wrapper">
                 <div class="special-wrapper wrapper-1">
-                <% if @employees_position_shifts != nil %>
+                <% if @employees_position_shifts.length > 0 %>
                     <h2 class="subpage-title">Your Scheduled Shifts</h2>
                         <table class="table">
                             <thead>
@@ -77,7 +77,7 @@
                                             </div>
                                             <div id="collapse<%= shift.id %>" class="panel-collapse collapse">
                                                 <div class="panel-body">
-                                                        <h5>Employees Needed For Shift: <%= shift.friendly_employees_needed - shift.employees.length%>
+                                                        <h5>Employees Needed For Shift:<%= shift.friendly_employees_needed - shift.employees.length%>
                                                         </h5>
                                                     <div class="row"> <!-- /.status bar -->
                                                         <div class="col-md-6 wrapper-1">
