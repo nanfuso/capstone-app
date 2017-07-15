@@ -34,7 +34,7 @@ class PositionShiftsController < ApplicationController
         @position_shift = PositionShift.find(params[:id])
         @position_shift.assign_attributes(
                                         employee_id: params[:employee][:employee_id],
-                                        shift_id: params[:shift][:shift_id],
+                                        
                                         position_id: params[:position][:position_id]
                                         )
         if @position_shift.save
