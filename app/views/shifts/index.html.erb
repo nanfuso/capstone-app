@@ -22,7 +22,7 @@
                                 <td><%= shift.shift_date.strftime('%m/%d/%Y') %></td>
                                 <td><%= shift.time.upcase %></td>
                                 <td><%= link_to "Update", "/shifts/#{shift.id}/edit", :class => "btn btn-flat flat-info" %></td>
-                                <td><%= link_to "Delete", "/shifts/#{shift.id}", method: :delete, :class => "btn btn-flat flat-inverse" %></td>
+                                <td><%= link_to "Delete", "/shifts/#{shift.id}", method: :delete, :class => "btn btn-flat flat-inverse"%></td>
                             </tr>
                             <% end %>    
                         </table>

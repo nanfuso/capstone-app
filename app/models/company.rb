@@ -17,12 +17,12 @@ class Company < ApplicationRecord
 
         relevant_categories.each do |rel_cat|
             relevant_category_string << rel_cat.category.api_ref
-            @category_string = relevant_category_string.join
+            @category_string = relevant_category_string.join('%2C')
             @category_string
         end
 
         responses = Unirest.get("#{ ENV["API_HOST"] }/events/search/?location.address=#{ street_address }&location.within=#{ distance }&categories=#{ @category_string }&token=#{ ENV["OAUTH_TOKEN"] }").body["events"]
-        responses = responses.first(100)
+        responses = responses.first(5)
 
         responses.each do |event_info|
             event = Event.new(event_info)

@@ -23,6 +23,8 @@
     <title>ShiftsNGigs</title>
     <%= csrf_meta_tags %>
 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +33,7 @@
           <link rel="shortcut icon" href="/ico/favicon.png">
           <title>My Theme Name</title>
           <!-- Bootstrap Core CSS -->
-          
+
           <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
           <!-- Plugins CSS -->
           <link href="/UItoTop/css/ui.totop.css" rel="stylesheet">
@@ -124,6 +126,16 @@
                                     <!-- /.container -->
                                 </nav>
                                <!-- /.navbar -->
+
+                              <div class="container">
+                                    <% flash.each do |name, message| %>
+                                     
+                                      <div class="alert alert-<%= name %> alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <%= message %>
+                                      </div>
+
+                                    <% end %> 
                             </header>
               <!-- /#header-2 -->
               <!-- /#footer-2 -->
@@ -304,6 +316,9 @@
               //     caroufredsel();
               // });            
           </script>
+
+          
+
   <%= yield %>
           <section id="awesome-callout" class="section colored-wrapper">
             <div class="container">

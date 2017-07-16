@@ -21,8 +21,8 @@ class EmployeesController < ApplicationController
             flash[:success] = "Account created!"
             redirect_to '/'
         else
-            redirect_to '/signup'
             flash[:warning] = "Please submit form again"
+            redirect_to '/signup'
         end
     end
 end

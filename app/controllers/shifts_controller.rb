@@ -2,8 +2,12 @@ class ShiftsController < ApplicationController
     before_action :authenticate_admin!
 
     def index
-        @shifts = Shift.where("shift_date >= ?", DateTime.now)
+        @shifts = Shift.where("shift_date >= ?", DateTime.now).sort_by{ |shift| shift[:shift_date]}
         
+    end
+
+    def show
+        @shift = Shift.find(params[:id])
     end
 
     def create

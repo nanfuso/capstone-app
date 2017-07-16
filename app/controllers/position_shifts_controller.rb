@@ -4,9 +4,9 @@ class PositionShiftsController < ApplicationController
 
     def index
         @position_shifts = PositionShift.all
-        @employees_position_shifts = PositionShift.where(employee_id: current_employee.id) 
+        @employees_position_shifts = PositionShift.where(employee_id: current_employee.id ).sort_by{ |shift| shift[:shift_date]} 
         @shifts = Shift.where("shift_date >= ?", DateTime.now)
-        # @width = (position_shift.shift.employees.length / position_shift.shift.friendly_employees_needed) * 100
+        @shifts = @shifts.sort_by{ |shift| shift[:shift_date]}
     end
 
     def create
@@ -18,8 +18,9 @@ class PositionShiftsController < ApplicationController
         if @position_shift.save
             flash[:success] = "Employee Added to shift!"
             redirect_to '/'
-        else redirect_to '/'
+        else 
             flash[:warning] = "Please submit again"
+            redirect_to '/'
         end
 
 

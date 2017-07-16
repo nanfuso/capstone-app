@@ -25,8 +25,9 @@ class CompanyCategoriesController < ApplicationController
         if @company_category.save
             flash[:success] = "Event categories added!"
             redirect_to '/companycategories'
-        else redirect_to '/companycategories'
+        else 
             flash[:warning] = "Please submit again"
+            redirect_to '/companycategories'
         end
     end
 

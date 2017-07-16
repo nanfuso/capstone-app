@@ -12,8 +12,9 @@ class CompaniesController < ApplicationController
         if @company.save
             flash[:success] = "Company successfully created!"
             redirect_to "companies/#{ @company.id }"
-        else redirect_to '/companies/new'
+        else 
             flash[:warning] = "Please submit again"
+            redirect_to '/companies/new'
         end
     end
 
