@@ -76,23 +76,23 @@ def friendly_employees_needed
     end
 
     def servers_needed
-        @servers_needed
+        @servers_needed.to_i
     end
 
     def bartenders_needed
-        @bartenders_needed
+        @bartenders_needed.to_i
     end
 
     def hoh_needed
-        @hoh_needed
+        @hoh_needed.to_i
     end
 
     def hosts_needed
-        @hosts_needed
+        @hosts_needed.to_i
     end
 
     def managers_needed
-        @managers_needed
+        @managers_needed.to_i
     end
 
     def width
