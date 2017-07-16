@@ -8,10 +8,12 @@ class CompanyCategory < ApplicationRecord
     end
 
     def progress_color
-        if width < 100
-            color = "info"
-        else
+        if width <= 40
+            color = "inverse"
+        elsif width > 40 && width <= 80
             color = "warning"
+        elsif width > 80
+            color = "danger"
         end
         color
     end
