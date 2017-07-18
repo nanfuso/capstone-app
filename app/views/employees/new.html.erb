@@ -1,8 +1,22 @@
+<section id="page-title-wrapper" class="section page-title-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 page-title">
+                        <h4>Employees</h4>
+                    </div>
+                    <!-- /.page-title -->
+                    
+                    <!-- /.breadcrumb-wrapper -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+</section>
 <section id="our-story" class="section colored-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 wrapper-1">
-                        <h3 class="subpage-title">Add New Employee</h3>
+                        <h5 class="subpage-title">Add New Employee</h5>
                         <h4>
             
                         <%= form_tag '/signup', method: :post do %>
@@ -12,10 +26,83 @@
                             <div>Password:<input type="password" name="password"></div>
                             <div>Confirm password:<input type="password" name="password_confirmation"></div>
                             <div> Company: <%= collection_select :company, :company_id, Company.all, :id, :name %></div>
-                            <div>Manager Access? </div>
+                            <div>Manager Access? Yes <input type="radio"> No <input type="radio"></div>
+                            <br>
                             <div><input type="submit" value="Create Account" class="btn btn-flat flat-inverse"></div>
                         <% end %>
                         </h4>
+                    </div>
+
+                    <div class="col-md-6 wrapper-1">
+                        <h5 class="subpage-title">Current Employees</h5>
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                        All Employees
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            
+                                            <% @employees.each do |employee|%>
+                                                <tr>
+                                                    <td><%= employee.full_name %></td>
+                                                    <td><button class="btn btn-flat flat-info">Update</button>
+                                                    <button class="btn btn-flat flat-inverse">Delete</button></td>
+                                                </tr>
+                                            <% end %>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                            Shift Breakdown
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <% @employees.each do |employee|%>
+                                                <%= employee.full_name %>
+                                                <div class="progress progress-striped">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= employee.employee_shift_data %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= employee.employee_shift_data %>%; "> <%= employee.position_shifts.length %> Shifts
+                                                    </div>
+                                                </div>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                                Shift Breakdown
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                               <table class="table">
+                                                    <% @employees.each do |employee|%>
+                                                        <tr>
+                                                            <td><%= employee.full_name %></td>
+                                                            <td><button class="btn btn-flat flat-info">Update</button>
+                                                            <button class="btn btn-flat flat-inverse">Delete</button></td>
+                                                        </tr>
+                                                    <% end %>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                     </div>
                 </div>
             </div>

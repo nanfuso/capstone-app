@@ -5,6 +5,7 @@ class EmployeesController < ApplicationController
     end
 
     def new
+        @employees = Employee.all
         render 'new.html.erb'
     end
 
@@ -18,7 +19,7 @@ class EmployeesController < ApplicationController
                                     company_id: params[:company][:company_id]
                                 )
         if employee.save
-            flash[:success] = "Account created!"
+            flash[:success] = "You're here!!!"
             redirect_to '/'
         else
             flash[:warning] = "Please submit form again"

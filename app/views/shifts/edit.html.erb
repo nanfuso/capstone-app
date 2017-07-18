@@ -1,8 +1,30 @@
+<section id="page-title-wrapper" class="section page-title-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 page-title">
+                        <h4>Shifts</h4>
+                    </div>
+                    <!-- /.page-title -->
+                    
+                    <!-- /.breadcrumb-wrapper -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+</section>
 
-<h1>Edit coverage</h1>
-<%= form_tag "/shifts/#{@shift.id}", method: :patch do %>
-<div>Date: <input type="date" name="shift_date" value="<%= @shift.shift_date %>"></div>
-<div>Time: <input type="text" name="time" value="<%= @shift.time %>"></div>
-<input type="submit" value="Create Request" class="btn btn-flat flat-info">
-<a href="/" class="btn btn-flat flat-inverse">Cancel</a>
-<% end %>
+<section id="our-story" class="section colored-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 wrapper-1">
+                        <h5 class="subpage-title"></h5>
+                        <%= form_tag "/shifts/#{@shift.id}", method: :patch do %>
+                        <div>Date: <input type="date" name="shift_date" value="<%= @shift.shift_date %>"></div>
+                        <div>Time: <input type="text" name="time" value="<%= @shift.time %>"></div>
+                        <input type="submit" value="Create Request" class="btn btn-flat flat-info">
+                        <a href="/" class="btn btn-flat flat-inverse">Cancel</a>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+</section>

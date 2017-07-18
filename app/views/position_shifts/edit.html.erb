@@ -1,8 +1,23 @@
+<section id="page-title-wrapper" class="section page-title-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 page-title">
+                        <h4>Shifts</h4>
+                    </div>
+                    <!-- /.page-title -->
+                    
+                    <!-- /.breadcrumb-wrapper -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+</section>
+
 <section id="our-story" class="section colored-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 wrapper-1">
-                        <h3 class="subpage-title">Update Shift</h3>
+                        <h5 class="subpage-title">Update Shift</h5>
                         <%= form_tag "/positionshifts/#{@position_shift.id}", method: :patch do %>
                             <div>Date: <%= @position_shift.shift.shift_date %></div>
                             <div>Time: <%= @position_shift.shift.time %> </div>

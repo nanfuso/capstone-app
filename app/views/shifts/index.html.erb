@@ -1,9 +1,22 @@
-
+<section id="page-title-wrapper" class="section page-title-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 page-title">
+                        <h4>Shifts</h4>
+                    </div>
+                    <!-- /.page-title -->
+                    
+                    <!-- /.breadcrumb-wrapper -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+</section>
 <section id="our-story" class="section colored-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 wrapper-1">
-                        <h3 class="subpage-title">Shifts Currently Being Staffed</h3>
+                        <h5 class="subpage-title">Shifts Currently Being Staffed</h5>
                         <table class="table">
                             <thead>
                             <tr class="info">
@@ -31,7 +44,7 @@
                     </div>
 
                     <div class="col-md-4 wrapper-1">
-                        <h3 class="subpage-title">Any others?</h3>
+                        <h5 class="subpage-title">Any others?</h5>
                         <%= form_tag '/shifts', method: :post do %>
                         <div>Date: <input type="date" name="shift_date"></div>
                         <div>Time: <input type="text" name="time"></div>

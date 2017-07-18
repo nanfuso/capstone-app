@@ -44,7 +44,7 @@ class ShiftsController < ApplicationController
     def destroy
         shift = Shift.find(params[:id])
         shift.destroy
-        flash[:danger] = "Posting Destroyed"
+        flash[:danger] = "Shift posting deleted"
         redirect_to '/shifts'
     end
 end

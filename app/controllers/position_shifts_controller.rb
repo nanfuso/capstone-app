@@ -49,7 +49,7 @@ class PositionShiftsController < ApplicationController
     def destroy
         position_shift = PositionShift.find(params[:id])
         position_shift.destroy
-        flash[:danger] = "Shift no longer covered"
+        flash[:danger] = "Better find someone else to cover that shift!"
         redirect_to '/'
     end
 
