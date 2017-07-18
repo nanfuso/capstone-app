@@ -104,4 +104,13 @@ def friendly_employees_needed
         width = (employees.length.to_f / friendly_employees_needed.to_f) * 100
         width.to_i
     end
+
+    def staffed_message
+        if width != 100
+            message = "Needs Employees"
+        else
+            message = "Staffed"
+        end
+        message
+    end
 end
