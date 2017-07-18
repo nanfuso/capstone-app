@@ -17,7 +17,7 @@
         <div class="col-md-2 content-wrapper"></div>
             <div class="col-md-8 content-wrapper">
                 <div class="special-wrapper wrapper-1">
-                <h5 class="subpage-title">Categories that Affect You</h5>
+                <h5 class="subpage-title">Categories that Affect <%= current_employee.company.name.titleize %></h5>
                     <% @company_categories.each do |category| %>
                         <%= category.category.name %>
                         
