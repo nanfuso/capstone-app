@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
     end
 
     def new
-        @employees = Employee.all
+        @employees = Employee.all.sort_by{ |emp| emp[:first_name]}
         render 'new.html.erb'
     end
 
@@ -19,8 +19,8 @@ class EmployeesController < ApplicationController
                                     company_id: params[:company][:company_id]
                                 )
         if employee.save
-            flash[:success] = "You're here!!!"
-            redirect_to '/'
+            flash[:success] = "You're hired!!!"
+            redirect_to '/signup'
         else
             flash[:warning] = "Please submit form again"
             redirect_to '/signup'
