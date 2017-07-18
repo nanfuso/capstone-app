@@ -5,7 +5,11 @@
                         <h4>Shifts</h4>
                     </div>
                     <!-- /.page-title -->
-                    
+                    <div class="col-xs-6 hidden-xs breadcrumb-wrapper">
+                        <ol class="breadcrumb pull-right">
+                            <li>Welcome, <%= current_employee.first_name.titleize %></li>
+                        </ol>
+                    </div>
                     <!-- /.breadcrumb-wrapper -->
                 </div>
                 <!-- /.row -->
@@ -17,7 +21,8 @@
 <section id="our-story" class="section colored-wrapper">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 wrapper-1">
+                    <div class="col-md-2 wrapper-1"></div>
+                    <div class="col-md-8 wrapper-1">
                         <h5 class="subpage-title">Shifts to be scheduled
                         </h5>
                         <%= form_tag '/positionshifts', method: :post do %>
@@ -29,9 +34,7 @@
                             <input type="submit" value="Staff Shift" class="btn btn-flat flat-inverse" >
                         <% end %>    
                     </div>
-
-                    <div class="col-md-6 wrapper-1">  
-                    </div>
+                    <div class="col-md-2 wrapper-1"></div>
 
                 </div>
             </div>
