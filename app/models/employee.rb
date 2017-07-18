@@ -13,6 +13,7 @@ class Employee < ApplicationRecord
     end
 
     def employee_shift_data
+        
         shift_data = (position_shifts.length.to_f / PositionShift.all.length.to_f) * 100
         shift_data.to_i
     end
